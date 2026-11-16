@@ -6,13 +6,13 @@ await pg.goto('http://localhost:8765/dist/page.html?notour');await new Promise(r
 const f=await pg.evaluate(()=>[document.activeElement.tagName,document.activeElement.id,document.hasFocus()]);
 await pg.keyboard.type('buji');await new Promise(r=>setTimeout(r,150));const v=await pg.$eval('#ara',e=>e.value);
 const nav=async i=>{const btns=await pg.$$('nav[aria-label="Ana menü"] button');await btns[i].click();await new Promise(r=>setTimeout(r,300));};
-await nav(3); const rows=await pg.$$('.row2'); await rows[2].click(); await new Promise(r=>setTimeout(r,250));
+await nav(5); const rows=await pg.$$('.row2'); await rows[2].click(); await new Promise(r=>setTimeout(r,250));
 const bt=await pg.$$('aside.drawer .pay.pri'); await bt[0].click(); await new Promise(r=>setTimeout(r,300));
 await pg.screenshot({path:'out/x1.png'});
 await pg.keyboard.press('F10'); await new Promise(r=>setTimeout(r,1500));
-await nav(3); await pg.screenshot({path:'out/x2.png'});
-await nav(5); const tot=await pg.$eval('.pg .mono',e=>e.textContent);
-await nav(4); const r2=await pg.$$('.row2'); await r2[0].click(); await new Promise(r=>setTimeout(r,200));
+await nav(5); await pg.screenshot({path:'out/x2.png'});
+await nav(7); const tot=await pg.$eval('.pg .mono',e=>e.textContent);
+await nav(6); const r2=await pg.$$('.row2'); await r2[0].click(); await new Promise(r=>setTimeout(r,200));
 const tb=await pg.$$('aside.drawer .tbtn.pri'); await tb[0].click(); await new Promise(r=>setTimeout(r,200)); await pg.keyboard.type('500'); 
 const tb2=await pg.$$('aside.drawer .tbtn.pri'); await tb2[0].click(); await new Promise(r=>setTimeout(r,300)); await pg.screenshot({path:'out/x3.png'});
 console.log({f,v,tot,errs});await b.close();

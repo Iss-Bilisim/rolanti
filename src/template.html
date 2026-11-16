@@ -656,6 +656,145 @@ label.tbtn{position:relative;cursor:pointer}
 .shamt{font-size:14.5px;font-weight:600;min-width:84px;text-align:right}
 .rl .shtop5,.rl .shtop5 *{cursor:pointer !important}
 @media (max-width:1250px){.shg{grid-template-columns:repeat(2,minmax(0,1fr))}.shhero,.shwide{grid-column:span 2}}
+/* ---- çerçeve + açılır kenar menü ---- */
+.rl{--shell:#E9E9E6;--ai-glow:#F6C69A;--ai-sun:rgba(246,170,110,.28);--ai-h1:#E4DDD3;--ai-h2:#D6CDC1;--ai-ground:#CBC1B3;--ai-road:#E9E3DA;--ai-line:#BDB3A5;--ai-moto:#3F3A35;--ai-moto2:#6C655D;--ai-moto3:#968E84}
+.rl[data-theme="dark"]{--shell:#0C0C0E;--ai-glow:#7A3E14;--ai-sun:rgba(240,140,70,.16);--ai-h1:#26242A;--ai-h2:#1E1C21;--ai-ground:#18171B;--ai-road:#2A282D;--ai-line:#3A373D;--ai-moto:#C9C4BC;--ai-moto2:#8F8981;--ai-moto3:#5F5A54}
+.frame{margin:10px 10px 10px 0;height:calc(100% - 20px);background:var(--bg);border-radius:18px;box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(0,0,0,.04),0 12px 32px -20px rgba(0,0,0,.18);overflow:hidden;position:relative;z-index:1}
+.rl[data-theme="dark"] .frame{box-shadow:0 0 0 1px #26262B,0 12px 32px -20px rgba(0,0,0,.6)}
+.side{background:var(--shell);z-index:60}
+.sidein{position:absolute;top:0;left:0;bottom:0;z-index:80;display:flex;flex-direction:column;background:var(--shell);overflow:hidden;white-space:nowrap;transition:width .3s cubic-bezier(.16,1,.3,1),box-shadow .3s ease-out,border-radius .3s ease-out}
+.sidein .nav span{transition:opacity .2s ease-out}
+.side .nav:hover .ic{transform:translateX(1px)}
+.side .nav span{display:inline-block;transition:transform .15s ease-out}
+.side .nav:hover span{transform:translateX(3px)}
+.nav:active{transform:none}
+/* ---- basma animasyonları yok: kartlar yerinde kalır ---- */
+.pcard:active,.ttile:active,.bcat:active,.hsq:active,.hsr:active,.tr.trc:active{transform:none !important}
+.pcard:hover .pimg img,.pcard .pimg img{transform:none !important}
+/* ---- ana sayfa satış paneli ---- */
+.homepg{flex:999 1 560px;min-width:0;height:100%;container-type:inline-size}
+.shsell{grid-column:1/-1;gap:12px}
+.hsearch{height:56px;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--ink);background:var(--surface)}
+.hsearch input{font-size:17px}
+.hsres{display:flex;flex-direction:column}
+.hsr{display:flex;align-items:center;gap:12px;min-height:58px;padding:0 10px;margin:0 -10px;border:0;border-radius:10px;background:transparent;text-align:left;width:calc(100% + 20px)}
+.hsr:hover,.hsr.first{background:var(--sunk)}
+.hsr.out{opacity:.55}
+.hsp{font-size:15px;font-weight:600}
+.hsplus{width:32px;height:32px;border-radius:999px;background:var(--ink);color:var(--surface);display:flex;align-items:center;justify-content:center;flex:none}
+.hsquick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.hsq{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);grid-template-rows:auto auto;column-gap:10px;row-gap:2px;align-items:center;padding:8px 10px 8px 8px;min-height:64px;border:0;border-radius:12px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);text-align:left;transition:box-shadow .15s ease-out}
+.hsq:hover{box-shadow:inset 0 0 0 1px var(--line-2),0 6px 16px -12px rgba(0,0,0,.3)}
+.hsqi{position:relative;display:block;grid-row:1/3;width:48px;height:48px;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);overflow:visible}
+.hsqi img{width:100%;height:100%;object-fit:contain;padding:4px;border-radius:8px}
+.hsqi .tq{top:-6px;right:-6px}
+.hsqn{font-size:13px;font-weight:500;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--ink);align-self:end}
+.hsq b{font-size:14px;font-weight:600;align-self:start}
+.rl .hsq,.rl .hsq *,.rl .hsr,.rl .hsr *,.rl .hev,.rl .hev *{cursor:pointer !important}
+.hev{display:flex;align-items:center;gap:12px;min-height:52px;width:100%;border:0;background:transparent;text-align:left;border-radius:10px;padding:0 8px 0 0;position:relative}
+.hev::before{content:"";width:4px;align-self:stretch;margin:8px 0;border-radius:4px;background:var(--ec)}
+.hev:hover{background:var(--sunk)}
+.hevt{font-size:13px;color:var(--ink-2);width:44px}
+@container (max-width:1100px){.shg{grid-template-columns:repeat(2,minmax(0,1fr))}.shhero,.shwide{grid-column:1/-1}.hsquick{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@container (max-width:760px){.shg{grid-template-columns:1fr}.hsquick{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ---- takvim ---- */
+.calnav{display:flex;align-items:center;gap:4px}
+.calbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.evf{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 12px;border:0;border-radius:10px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-size:13.5px;font-weight:500;color:var(--ink)}
+.evf i{width:9px;height:9px;border-radius:3px}
+.evf em{font-style:normal;font-size:12px;color:var(--ink-3)}
+.evf.on{box-shadow:inset 0 0 0 2px var(--ink)}
+.calm{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.cmh{padding:10px 12px;font-size:12.5px;font-weight:600;color:var(--ink-2);border-bottom:1px solid var(--line);background:var(--sunk)}
+.cmc{min-height:118px;padding:6px 6px 8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-width:0;transition:background .12s ease-out}
+.cmc:nth-child(7n){border-right:0}
+.cmc:hover{background:var(--sunk)}
+.cmc.out{background:color-mix(in srgb,var(--sunk) 55%,transparent)}
+.cmc.out .cmn{color:var(--ink-3)}
+.cmn{width:26px;height:26px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.cmn.today{background:var(--ink);color:var(--surface)}
+.evc{display:flex;align-items:center;gap:5px;width:100%;min-height:24px;padding:0 7px;border:0;border-radius:6px;background:color-mix(in srgb,var(--ec) 14%,var(--surface));box-shadow:inset 3px 0 0 var(--ec);font-size:12.5px;font-weight:500;color:var(--ink);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evc:hover{background:color-mix(in srgb,var(--ec) 24%,var(--surface))}
+.evc.done{opacity:.55;text-decoration:line-through}
+.evt1{font-family:"Geist Mono",ui-monospace,monospace;font-size:11px;color:var(--ink-2);flex:none}
+.cmore{font-size:12px;color:var(--ink-2);padding-left:6px}
+.rl .evc,.rl .evd,.rl .cli{cursor:pointer !important}
+.rl .cmc,.rl .cwc,.rl .cdc{cursor:cell}
+.calw{display:grid;grid-template-columns:64px repeat(7,minmax(0,1fr));background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.cwh0{border-bottom:1px solid var(--line);background:var(--sunk)}
+.cwh{display:flex;flex-direction:column;align-items:center;padding:8px 4px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);background:var(--sunk);font-size:12.5px}
+.cwh b{font-weight:600}.cwh span{color:var(--ink-2);font-size:12px}
+.cwh.today b,.cwh.today span{color:var(--ink);font-weight:700}
+.cwt{padding:6px 8px;font-size:11.5px;color:var(--ink-3);border-bottom:1px solid var(--line)}
+.cwc{min-height:52px;padding:3px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-width:0}
+.cwc.today{background:color-mix(in srgb,var(--sunk) 60%,transparent)}
+.cwc:hover{background:var(--sunk)}
+.cald{background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.cdr{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--line)}
+.cdr:last-child{border-bottom:0}
+.cdc{min-height:58px;padding:5px;display:flex;flex-direction:column;gap:5px;border-left:1px solid var(--line)}
+.cdc:hover{background:var(--sunk)}
+.evd{display:flex;flex-direction:column;gap:2px;align-items:flex-start;padding:10px 12px;border:0;border-radius:10px;background:color-mix(in srgb,var(--ec) 13%,var(--surface));box-shadow:inset 4px 0 0 var(--ec);text-align:left}
+.evd b{font-size:14.5px;font-weight:600}.evd span{font-size:12.5px;color:var(--ink-2)}.evd em{font-style:normal;font-size:13px;color:var(--ink-2)}
+.call{display:flex;flex-direction:column;gap:22px}
+.clg h3{margin:0 0 8px;font-size:13.5px;font-weight:600;color:var(--ink-2);text-transform:capitalize}
+.cli{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;margin-bottom:8px;border-radius:12px;background:var(--surface);box-shadow:0 0 0 1px var(--line),inset 4px 0 0 var(--ec)}
+.cli:hover{box-shadow:0 0 0 1px var(--line-2),inset 4px 0 0 var(--ec)}
+.cli .hmain em{font-style:normal;font-size:13px;color:var(--ink-2);white-space:normal}
+.clchk{width:26px;height:26px;flex:none;margin-top:2px;border:0;border-radius:8px;background:var(--sunk);box-shadow:inset 0 0 0 1.5px var(--line-2);color:transparent;display:flex;align-items:center;justify-content:center}
+.clchk .ic{width:15px;height:15px}
+.cli:has(.hmain) .clchk:hover{color:var(--ink-3)}
+.cltag{font-size:12px;color:var(--ink-2);white-space:nowrap}
+.evsws{display:flex;gap:8px;flex-wrap:wrap;align-items:center;min-height:48px}
+.evsw{width:28px;height:28px;border:0;border-radius:999px;box-shadow:0 0 0 2px var(--surface),0 0 0 3px transparent}
+.evsw.on{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+.evts{display:flex;gap:6px;flex-wrap:wrap}
+.evt{height:34px;padding:0 12px;border:0;border-radius:999px;background:var(--sunk);font-size:13.5px;font-weight:500;color:var(--ink-2)}
+.evt.on{background:var(--ink);color:var(--surface)}
+/* ---- asistan ---- */
+.aipg{position:relative;padding:0 !important;overflow:hidden;display:flex;flex-direction:column;height:100%}
+.aibar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;border-bottom:1px solid var(--line)}
+.aih{display:flex;align-items:center;gap:8px;margin:0;font-size:15px;font-weight:600}
+.aih .ic{width:18px;height:18px}
+.aipg{background:linear-gradient(to bottom,var(--bg) 40%,color-mix(in srgb,var(--ai-glow) 22%,var(--bg)) 100%)}
+.aiart{position:absolute;left:0;right:0;bottom:0;width:100%;height:42%;min-height:240px;z-index:0;pointer-events:none}
+.aiscroll{position:relative;z-index:1;flex:1;min-height:0;overflow:auto;padding:0 24px}
+.aihero{max-width:720px;margin:0 auto;padding-top:24px;text-align:center}
+.aipg.empty .aiscroll{flex:0 0 auto;overflow:visible;margin-top:clamp(40px,18vh,200px)}
+.aipg.empty .aidock{padding-top:24px}
+.aihero h2{margin:0;font-size:36px;font-weight:600;letter-spacing:-.025em}
+.aihero p{margin:12px 0 0;font-size:15.5px;color:var(--ink-2)}
+.aithread{max-width:760px;margin:0 auto;padding:28px 0 16px;display:flex;flex-direction:column;gap:18px}
+.aim{display:flex;gap:12px;align-items:flex-start}
+.aim.user{justify-content:flex-end}
+.aim.user .aib{background:var(--ink);color:var(--surface);border-radius:16px 16px 4px 16px;max-width:78%}
+.aim.assistant .aib{background:var(--surface);box-shadow:0 0 0 1px var(--line);border-radius:4px 16px 16px 16px;max-width:86%}
+.aib{padding:12px 16px;font-size:15px;line-height:1.55}
+.ail{margin:0 0 6px}.ail:last-child{margin-bottom:0}
+.ail.li{padding-left:16px;position:relative}
+.ail.li::before{content:"";position:absolute;left:3px;top:.65em;width:5px;height:5px;border-radius:999px;background:currentColor;opacity:.55}
+.aiav{width:32px;height:32px;flex:none;border-radius:10px;background:var(--surface);box-shadow:0 0 0 1px var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent-ink)}
+.ailoc{display:block;margin-top:8px;font-size:12px;color:var(--ink-3)}
+.aidots{display:inline-flex;gap:4px;padding:4px 0}
+.aidots i{width:7px;height:7px;border-radius:999px;background:var(--ink-3);animation:aidot 1s ease-in-out infinite}
+.aidots i:nth-child(2){animation-delay:.15s}.aidots i:nth-child(3){animation-delay:.3s}
+@keyframes aidot{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.aidock{position:relative;z-index:2;padding:12px 24px 28px}
+.aicomp{max-width:720px;margin:0 auto;background:var(--surface);border-radius:16px;box-shadow:0 0 0 1px var(--line),0 18px 40px -24px rgba(0,0,0,.35)}
+.aicomp textarea{display:block;width:100%;min-height:72px;max-height:200px;padding:16px 18px 6px;border:0;background:transparent;resize:none;font:inherit;font-size:15.5px;color:var(--ink);outline:none}
+.aicf{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px 10px 14px;border-top:1px solid var(--line)}
+.aichip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2)}
+.aisend{width:38px;height:38px;border:0;border-radius:11px;background:var(--sunk-2);color:var(--ink-3);display:flex;align-items:center;justify-content:center;transition:background .15s ease-out,color .15s ease-out}
+.aisend.on{background:var(--ink);color:var(--surface)}
+.aisug{max-width:720px;margin:14px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.aisg{display:flex;align-items:flex-start;gap:10px;padding:12px;border:0;border-radius:14px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(6px);box-shadow:0 0 0 1px var(--line);text-align:left}
+.aisg:hover{box-shadow:0 0 0 1px var(--line-2),0 8px 20px -14px rgba(0,0,0,.35)}
+.aisg b{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.aisg span span{display:block;font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.aisgi{width:32px;height:32px;flex:none;border-radius:9px;background:var(--sunk);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.aisgi .ic{width:18px;height:18px}
+.rl .aisg,.rl .aisg *{cursor:pointer !important}
+@media (max-width:1250px){.aisug{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tauto{position:absolute;right:10px;bottom:8px;font-size:11px;color:var(--ink-3)}
 .tpin{position:absolute;top:6px;right:6px;width:26px;height:26px;border:0;border-radius:7px;background:transparent;color:var(--ink-3);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s ease-out,background .15s ease-out}
 .tpin .ic{width:15px;height:15px}
@@ -759,10 +898,10 @@ label.tbtn{position:relative;cursor:pointer}
 @media (max-width:900px){.side{display:none !important}.cartcol{flex-basis:100% !important;max-width:none !important;border-left:0 !important}}
 </style>
 </helmet>
-<div class="rl" data-theme="{{theme}}" onKeyDown="{{onKey}}" style="position: relative; display: flex; flex-wrap: wrap; width: 100%; height: 100vh; min-height: 640px; overflow: hidden; background: var(--bg)">
+<div class="rl" data-theme="{{theme}}" onKeyDown="{{onKey}}" style="position: relative; display: flex; flex-wrap: wrap; width: 100%; height: 100vh; min-height: 640px; overflow: hidden; background: var(--shell)">
 
 <!-- SOL MENÜ -->
-<aside class="side" style="{{sideStyle}}">
+<aside class="side" style="{{sideStyle}}" onMouseEnter="{{sideEnter}}" onMouseLeave="{{sideLeave}}"><div class="sidein" style="{{sideInStyle}}">
   <div style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 6px 0 10px">
     <div style="display: flex; align-items: center; gap: 10px; color: var(--ink)">
       <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 28px; height: 28px; flex: none; overflow: visible">
@@ -813,10 +952,10 @@ label.tbtn{position:relative;cursor:pointer}
       </sc-if>
     </div>
   </div>
-</aside>
+</div></aside>
 
 <!-- ORTA + SAĞ -->
-<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; height: 100%">
+<div class="frame" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
 
   <!-- ÜST ŞERİT -->
   <header style="position: relative; display: flex; align-items: center; gap: 8px; height: 60px; flex: none; padding: 0 16px 0 24px">
@@ -875,10 +1014,11 @@ label.tbtn{position:relative;cursor:pointer}
     </sc-if>
   </header>
 
-  <sc-if value="{{isSatis}}" hint-placeholder-val="{{true}}">
+  <sc-if value="{{isSale}}" hint-placeholder-val="{{true}}">
   <div style="flex: 1; min-height: 0; display: flex; flex-wrap: wrap">
 
   <!-- ORTA ALAN -->
+  <sc-if value="{{isSatis}}" hint-placeholder-val="{{true}}">
   <main class="smain">
     <label for="ara" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Ürün ara ya da barkod okut</label>
     <div class="{{searchCls}}" id="t-ara">
@@ -981,6 +1121,124 @@ label.tbtn{position:relative;cursor:pointer}
       </sc-if>
     </div>
   </main>
+  </sc-if>
+  <!-- ANA SAYFA · satış odaklı -->
+  <sc-if value="{{isAna}}" hint-placeholder-val="{{false}}">
+    <section class="pg scroll homepg" aria-labelledby="h-ana">
+      <div style="width: 100%">
+        <div class="pghead" style="margin-bottom: 18px">
+          <h1 id="h-ana" style="margin-right: 0">{{h.greet}}</h1>
+          <span class="sub" style="margin-right: auto">{{h.date}}</span>
+          <button class="tbtn" onClick="{{openExport}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"></path></svg>Dışa aktar</button>
+          <button class="tbtn" onClick="{{h.goSale}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1.1 11.1a1.6 1.6 0 0 1-1.6 1.4H8.2a1.6 1.6 0 0 1-1.6-1.4zM9 8.5V7a3 3 0 0 1 6 0v1.5M12.9 11.3l-2.7 3.9h3.6l-2.6 3.6"></path></svg>Tam ekran satış</button>
+        </div>
+        <div class="shg">
+        <div class="hcard shsell">
+            <div class="hhead"><h2>Hızlı satış</h2><span class="sub">Yazın ya da barkodu okutun · Enter ilk ürünü fişe ekler · F9 ödeme</span></div>
+            <div class="search hsearch">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.5a6.5 6.5 0 1 0 .01 0zM16 16l4.5 4.5"></path></svg>
+              <input id="hara" ref="{{hsRef}}" value="{{hs.q}}" onChange="{{hs.onQ}}" onKeyDown="{{hs.key}}" placeholder="Ürün adı, stok kodu ya da barkod" autoComplete="off" spellCheck="false" aria-label="Ana sayfada ürün ara">
+              <sc-if value="{{hs.hasQ}}" hint-placeholder-val="{{false}}"><button class="iconbtn" onClick="{{hs.clear}}" aria-label="Aramayı temizle"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></sc-if>
+            </div>
+            <sc-if value="{{hs.hasQ}}" hint-placeholder-val="{{false}}">
+              <div class="hsres">
+                <sc-for list="{{hs.res}}" as="r" hint-placeholder-count="4"><button class="{{r.cls}}" onClick="{{r.add}}"><span class="hthumb"><sc-if value="{{r.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{r.photo}}" alt=""></sc-if></span><span class="hmain"><b>{{r.name}}</b><span>{{r.sku}} · {{r.stock}}</span></span><b class="mono hsp">{{r.price}}</b><span class="hsplus" aria-hidden="true"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button></sc-for>
+                <sc-if value="{{hs.none}}" hint-placeholder-val="{{false}}"><div class="hempty">Bu aramada ürün bulunamadı.</div></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{hs.noQ}}" hint-placeholder-val="{{true}}">
+              <div class="hsquick">
+                <sc-for list="{{hs.quick}}" as="t" hint-placeholder-count="10"><button class="hsq" onClick="{{t.add}}"><span class="hsqi"><sc-if value="{{t.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{t.photo}}" alt=""></sc-if><sc-if value="{{t.inCart}}" hint-placeholder-val="{{false}}"><span class="tq">{{t.qty}}</span></sc-if></span><span class="hsqn">{{t.name}}</span><b class="mono">{{t.price}}</b></button></sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div class="hcard shhero">
+            <div class="shtop">
+              <div>
+                <div class="shlab">Bugünkü satış</div>
+                <div class="shbig mono">{{sh.total}}</div>
+                <div class="shsub"><span class="{{sh.deltaCls}}">{{sh.delta}}</span><span>{{sh.deltaNote}}</span></div>
+              </div>
+              <div class="shgoal">
+                <div class="shgl"><span>Günlük hedef</span><b class="mono">{{sh.target}}</b></div>
+                <div class="shbar"><i style="{{sh.barStyle}}"></i></div>
+                <div class="shgl"><span>{{sh.remain}}</span><b>{{sh.pct}}</b></div>
+              </div>
+            </div>
+            <div class="shstats">
+              <div><span>Fiş</span><b class="mono">{{sh.cnt}}</b></div>
+              <div><span>Ortalama fiş</span><b class="mono">{{sh.avg}}</b></div>
+              <div><span>Satılan ürün</span><b class="mono">{{sh.units}}</b></div>
+              <div><span>Kasadaki nakit</span><b class="mono">{{k.cash}}</b></div>
+            </div>
+          </div>
+          <div class="hcard shpay">
+            <div class="hhead"><h2>Ödeme dağılımı</h2></div>
+            <div class="shstack"><sc-for list="{{sh.pays}}" as="m" hint-placeholder-count="4"><i style="{{m.seg}}"></i></sc-for></div>
+            <sc-for list="{{sh.pays}}" as="m" hint-placeholder-count="4">
+              <div class="shleg"><i style="{{m.dot}}"></i><span>{{m.label}}</span><b class="mono">{{m.amt}}</b><em>{{m.pct}}</em></div>
+            </sc-for>
+          </div>
+          <div class="hcard shwide">
+            <div class="hhead"><h2>Saat saat satış</h2><span class="sub">{{sh.hourNote}}</span></div>
+            <div class="shbars">
+              <sc-for list="{{sh.hours}}" as="b" hint-placeholder-count="12">
+                <div class="shcol"><span class="shv mono">{{b.val}}</span><div class="shtrack"><div class="{{b.cls}}" style="{{b.style}}"></div></div><span class="shx mono">{{b.label}}</span></div>
+              </sc-for>
+            </div>
+          </div>
+          <div class="hcard">
+            <div class="hhead"><h2>Bugün en çok satanlar</h2><button class="rlink" onClick="{{h.goSale}}">Hızlı satışa git</button></div>
+            <sc-for list="{{sh.top}}" as="t" hint-placeholder-count="5">
+              <button class="shtop5" onClick="{{t.open}}">
+                <span class="shrank mono">{{t.rank}}</span>
+                <span class="hthumb"><sc-if value="{{t.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{t.photo}}" alt=""></sc-if></span>
+                <span class="hmain"><b>{{t.name}}</b><span class="shtb"><i style="{{t.barStyle}}"></i></span></span>
+                <span class="shta"><b class="mono">{{t.amt}}</b><span>{{t.qty}}</span></span>
+              </button>
+            </sc-for>
+          </div>
+          <div class="hcard">
+            <div class="hhead"><h2>Son fişler</h2><button class="rlink" onClick="{{h.goKasa}}">Kasa raporu</button></div>
+            <sc-for list="{{sh.last}}" as="x" hint-placeholder-count="6">
+              <div class="shrow">
+                <span class="shno mono">{{x.time}}</span>
+                <span class="hmain"><b>{{x.what}}</b><span>{{x.no}} · {{x.who}}</span></span>
+                <span class="{{x.mCls}}">{{x.method}}</span>
+                <b class="mono shamt">{{x.amt}}</b>
+              </div>
+            </sc-for>
+          </div>
+          <div class="hcard">
+            <div class="hhead"><h2>Ödemesi bekleyen servis</h2><button class="rlink" onClick="{{h.goServis}}">İş emirleri</button></div>
+            <sc-for list="{{sh.ready}}" as="r" hint-placeholder-count="2">
+              <div class="hrow"><span class="plate">{{r.plate}}</span><span class="hmain"><b>{{r.name}}</b><span>{{r.amt}}</span></span><button class="tbtn pri" onClick="{{r.pay}}" style="height: 40px">Ödemeye aktar</button></div>
+            </sc-for>
+            <sc-if value="{{sh.noReady}}" hint-placeholder-val="{{false}}"><div class="hempty">Teslime hazır motor yok.</div></sc-if>
+          </div>
+          <div class="hcard">
+            <div class="hhead"><h2>Tahsil edilecek veresiye</h2><span class="sub mono">{{sh.debtTotal}}</span></div>
+            <sc-for list="{{sh.debts}}" as="r" hint-placeholder-count="3">
+              <div class="hrow"><span class="av" style="width: 36px; height: 36px; font-size: 13px">{{r.initials}}</span><span class="hmain"><b>{{r.name}}</b></span><b class="mono" style="color: var(--warn-ink); font-weight: 600; margin-right: 8px">{{r.amt}}</b><button class="tbtn" onClick="{{r.go}}" style="height: 40px">Tahsilat al</button></div>
+            </sc-for>
+          </div>
+          <div class="hcard">
+            <div class="hhead"><h2>Satışı kaçırmayın</h2><span class="sub">Azalan ürünler</span></div>
+            <sc-for list="{{sh.risk}}" as="r" hint-placeholder-count="4">
+              <div class="hrow"><span class="hthumb"><sc-if value="{{r.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{r.photo}}" alt=""></sc-if></span><span class="hmain"><b>{{r.name}}</b><span class="shrs"><span class="{{r.stCls}}">{{r.st}}</span><span>{{r.sold}}</span></span></span><button class="{{r.btnCls}}" onClick="{{r.order}}" style="height: 40px">{{r.btn}}</button></div>
+            </sc-for>
+            <sc-if value="{{sh.noRisk}}" hint-placeholder-val="{{false}}"><div class="hempty">Tüm ürünlerde stok yeterli.</div></sc-if>
+          </div>
+          <div class="hcard">
+            <div class="hhead"><h2>Bugün takvimde</h2><button class="rlink" onClick="{{cv.openCal}}">Takvime git</button></div>
+            <sc-for list="{{cv.todayList}}" as="e" hint-placeholder-count="3"><button class="hev" onClick="{{e.open}}" style="{{e.style}}"><span class="hevt mono">{{e.time}}</span><span class="hmain"><b>{{e.title}}</b><span>{{e.cat}}</span></span></button></sc-for>
+            <sc-if value="{{cv.noToday}}" hint-placeholder-val="{{false}}"><div class="hempty">Bugün takvim boş.</div></sc-if>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
 
   <!-- FİŞ -->
   <aside class="cartcol receipt" id="t-fis" aria-label="Fiş">
@@ -1084,95 +1342,127 @@ label.tbtn{position:relative;cursor:pointer}
   </div>
   </sc-if>
 
-  <!-- ANA SAYFA · satış odaklı -->
-  <sc-if value="{{isAna}}" hint-placeholder-val="{{false}}">
-    <section class="pg scroll" aria-labelledby="h-ana">
+  <!-- ASİSTAN -->
+  <sc-if value="{{isAsistan}}" hint-placeholder-val="{{false}}">
+    <section class="{{ai.pgCls}}" aria-labelledby="h-ai">
+      <div class="aibar"><h1 id="h-ai" class="aih"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l1.8 4.9 4.9 1.8-4.9 1.8L12 16.9l-1.8-4.9-4.9-1.8 4.9-1.8zM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"></path></svg>Rölanti Asistan</h1><sc-if value="{{ai.hasMsgs}}" hint-placeholder-val="{{false}}"><button class="tbtn plain" onClick="{{ai.reset}}" style="height: 36px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yeni sohbet</button></sc-if></div>
+      <svg class="aiart" viewBox="0 0 1600 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <g id="aiMoto">
+      <circle cx="22" cy="62" r="15" style="fill: none; stroke: currentColor; stroke-width: 5"></circle>
+      <circle cx="98" cy="62" r="15" style="fill: none; stroke: currentColor; stroke-width: 5"></circle>
+      <path d="M22 62L40 44M98 62L88 30M84 26l10-4" style="fill: none; stroke: currentColor; stroke-width: 4.5; stroke-linecap: round"></path>
+      <path d="M38 44Q48 30 66 32L82 30Q90 30 90 37L80 47Q62 52 46 50Z" style="fill: currentColor"></path>
+      <rect x="46" y="46" width="24" height="14" rx="3" style="fill: currentColor"></rect>
+      <path d="M60 33Q60 16 73 11" style="fill: none; stroke: currentColor; stroke-width: 10; stroke-linecap: round"></path>
+      <circle cx="77" cy="8" r="7.5" style="fill: currentColor"></circle>
+      <path d="M71 17L88 27M61 35L68 49L59 57" style="fill: none; stroke: currentColor; stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round"></path>
+    </g>
+  </defs>
+  
+  <circle cx="1420" cy="120" r="56" style="fill: var(--ai-sun)"></circle>
+  <path d="M0 230L120 170L230 205L360 120L470 190L560 150L690 215L820 130L930 185L1040 140L1170 210L1290 150L1420 200L1520 160L1600 190V380H0Z" style="fill: var(--ai-h1)"></path>
+  <path d="M0 290L160 240L300 268L450 220L610 262L780 230L930 270L1100 228L1260 262L1430 232L1600 258V380H0Z" style="fill: var(--ai-h2)"></path>
+  <path d="M0 380C260 330 480 322 760 318C1040 314 1300 300 1600 270V380Z" style="fill: var(--ai-ground)"></path>
+  <path d="M-20 372C300 336 560 330 800 326C1100 321 1350 306 1620 278" style="fill: none; stroke: var(--ai-road); stroke-width: 18; stroke-linecap: round"></path>
+  <path d="M-20 372C300 336 560 330 800 326C1100 321 1350 306 1620 278" style="fill: none; stroke: var(--ai-line); stroke-width: 2; stroke-dasharray: 18 22"></path>
+  <use href="#aiMoto" transform="translate(300 268) scale(.8)" style="color: var(--ai-moto)"></use>
+  <use href="#aiMoto" transform="translate(860 262) scale(.62)" style="color: var(--ai-moto2)"></use>
+  <use href="#aiMoto" transform="translate(1300 236) scale(.48)" style="color: var(--ai-moto3)"></use>
+  <path d="M276 330h-40M270 318h-26M840 304h-34" style="fill: none; stroke: var(--ai-moto2); stroke-width: 3; stroke-linecap: round; opacity: .5"></path>
+</svg>
+      <div class="aiscroll scroll">
+        <sc-if value="{{ai.empty}}" hint-placeholder-val="{{true}}">
+          <div class="aihero"><h2>{{ai.greet}}</h2><p>Satışları özetleyebilir, stok önerebilir, fişe ürün ekleyebilir ya da takvime görev yazabilirim.</p></div>
+        </sc-if>
+        <sc-if value="{{ai.hasMsgs}}" hint-placeholder-val="{{false}}">
+          <div class="aithread">
+            <sc-for list="{{ai.msgs}}" as="m" hint-placeholder-count="2">
+              <div class="{{m.cls}}">
+                <sc-if value="{{m.isBot}}" hint-placeholder-val="{{false}}"><span class="aiav"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l1.8 4.9 4.9 1.8-4.9 1.8L12 16.9l-1.8-4.9-4.9-1.8 4.9-1.8zM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"></path></svg></span></sc-if>
+                <div class="aib">
+                  <sc-if value="{{m.pending}}" hint-placeholder-val="{{false}}"><span class="aidots"><i></i><i></i><i></i></span></sc-if>
+                  <sc-for list="{{m.lines}}" as="ln" hint-placeholder-count="2"><p class="{{ln.cls}}">{{ln.t}}</p></sc-for>
+                  <sc-if value="{{m.local}}" hint-placeholder-val="{{false}}"><span class="ailoc">Çevrimdışı yanıt · dükkan verilerinden</span></sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <div class="aidock">
+        <div class="aicomp">
+          <textarea ref="{{aiRef}}" value="{{ai.input}}" onChange="{{ai.onIn}}" onKeyDown="{{ai.key}}" placeholder="Bir şey sorun ya da yaptırın: “Bugünün satış özeti”, “Yarın 10:00 için servis randevusu ekle”…" rows="2" aria-label="Asistana yazın"></textarea>
+          <div class="aicf">
+            <span class="aichip"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M3 19.5h18"></path></svg>Dükkan verileri bağlı</span>
+            <sc-if value="{{ai.idle}}" hint-placeholder-val="{{true}}"><button class="{{ai.sendCls}}" onClick="{{ai.send}}" aria-label="Gönder"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></button></sc-if>
+            <sc-if value="{{ai.busy}}" hint-placeholder-val="{{false}}"><button class="aisend on" onClick="{{ai.stop}}" aria-label="Durdur"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" style="fill: currentColor; stroke: none"></rect></svg></button></sc-if>
+          </div>
+        </div>
+        <sc-if value="{{ai.empty}}" hint-placeholder-val="{{true}}">
+          <div class="aisug"><sc-for list="{{ai.sugg}}" as="g" hint-placeholder-count="4"><button class="aisg" onClick="{{g.go}}"><span class="aisgi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{g.icon}}"></path></svg></span><span><b>{{g.title}}</b><span>{{g.hint}}</span></span></button></sc-for></div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- TAKVİM -->
+  <sc-if value="{{isTakvim}}" hint-placeholder-val="{{false}}">
+    <section class="pg scroll" aria-labelledby="h-cal">
       <div style="width: 100%">
-        <div class="pghead" style="margin-bottom: 18px">
-          <h1 id="h-ana" style="margin-right: 0">{{h.greet}}</h1>
-          <span class="sub" style="margin-right: auto">{{h.date}}</span>
-          <button class="tbtn" onClick="{{openExport}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"></path></svg>Dışa aktar</button>
-          <button class="tbtn pri" onClick="{{h.goSale}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1.1 11.1a1.6 1.6 0 0 1-1.6 1.4H8.2a1.6 1.6 0 0 1-1.6-1.4zM9 8.5V7a3 3 0 0 1 6 0v1.5M12.9 11.3l-2.7 3.9h3.6l-2.6 3.6"></path></svg>Hızlı satış</button>
+        <div class="pghead" style="margin-bottom: 14px; flex-wrap: wrap; row-gap: 10px">
+          <h1 id="h-cal" style="margin-right: 4px; text-transform: capitalize">{{cv.title}}</h1>
+          <sc-if value="{{cv.notList}}" hint-placeholder-val="{{true}}"><div class="calnav"><button class="iconbtn" onClick="{{cv.prev}}" aria-label="Önceki"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><button class="tbtn" onClick="{{cv.today}}" style="height: 38px">Bugün</button><button class="iconbtn" onClick="{{cv.next}}" aria-label="Sonraki"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div></sc-if>
+          <div class="seg2w" style="margin-left: auto"><sc-for list="{{cv.views}}" as="v" hint-placeholder-count="4"><button class="{{v.cls}}" onClick="{{v.pick}}">{{v.label}}</button></sc-for></div>
+          <button class="tbtn pri" onClick="{{cv.newEv}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yeni etkinlik</button>
         </div>
-        <div class="shg">
-          <div class="hcard shhero">
-            <div class="shtop">
-              <div>
-                <div class="shlab">Bugünkü satış</div>
-                <div class="shbig mono">{{sh.total}}</div>
-                <div class="shsub"><span class="{{sh.deltaCls}}">{{sh.delta}}</span><span>{{sh.deltaNote}}</span></div>
-              </div>
-              <div class="shgoal">
-                <div class="shgl"><span>Günlük hedef</span><b class="mono">{{sh.target}}</b></div>
-                <div class="shbar"><i style="{{sh.barStyle}}"></i></div>
-                <div class="shgl"><span>{{sh.remain}}</span><b>{{sh.pct}}</b></div>
-              </div>
-            </div>
-            <div class="shstats">
-              <div><span>Fiş</span><b class="mono">{{sh.cnt}}</b></div>
-              <div><span>Ortalama fiş</span><b class="mono">{{sh.avg}}</b></div>
-              <div><span>Satılan ürün</span><b class="mono">{{sh.units}}</b></div>
-              <div><span>Kasadaki nakit</span><b class="mono">{{k.cash}}</b></div>
-            </div>
-          </div>
-          <div class="hcard shpay">
-            <div class="hhead"><h2>Ödeme dağılımı</h2></div>
-            <div class="shstack"><sc-for list="{{sh.pays}}" as="m" hint-placeholder-count="4"><i style="{{m.seg}}"></i></sc-for></div>
-            <sc-for list="{{sh.pays}}" as="m" hint-placeholder-count="4">
-              <div class="shleg"><i style="{{m.dot}}"></i><span>{{m.label}}</span><b class="mono">{{m.amt}}</b><em>{{m.pct}}</em></div>
-            </sc-for>
-          </div>
-          <div class="hcard shwide">
-            <div class="hhead"><h2>Saat saat satış</h2><span class="sub">{{sh.hourNote}}</span></div>
-            <div class="shbars">
-              <sc-for list="{{sh.hours}}" as="b" hint-placeholder-count="12">
-                <div class="shcol"><span class="shv mono">{{b.val}}</span><div class="shtrack"><div class="{{b.cls}}" style="{{b.style}}"></div></div><span class="shx mono">{{b.label}}</span></div>
-              </sc-for>
-            </div>
-          </div>
-          <div class="hcard">
-            <div class="hhead"><h2>Bugün en çok satanlar</h2><button class="rlink" onClick="{{h.goSale}}">Hızlı satışa git</button></div>
-            <sc-for list="{{sh.top}}" as="t" hint-placeholder-count="5">
-              <button class="shtop5" onClick="{{t.open}}">
-                <span class="shrank mono">{{t.rank}}</span>
-                <span class="hthumb"><sc-if value="{{t.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{t.photo}}" alt=""></sc-if></span>
-                <span class="hmain"><b>{{t.name}}</b><span class="shtb"><i style="{{t.barStyle}}"></i></span></span>
-                <span class="shta"><b class="mono">{{t.amt}}</b><span>{{t.qty}}</span></span>
-              </button>
-            </sc-for>
-          </div>
-          <div class="hcard">
-            <div class="hhead"><h2>Son fişler</h2><button class="rlink" onClick="{{h.goKasa}}">Kasa raporu</button></div>
-            <sc-for list="{{sh.last}}" as="x" hint-placeholder-count="6">
-              <div class="shrow">
-                <span class="shno mono">{{x.time}}</span>
-                <span class="hmain"><b>{{x.what}}</b><span>{{x.no}} · {{x.who}}</span></span>
-                <span class="{{x.mCls}}">{{x.method}}</span>
-                <b class="mono shamt">{{x.amt}}</b>
-              </div>
-            </sc-for>
-          </div>
-          <div class="hcard">
-            <div class="hhead"><h2>Ödemesi bekleyen servis</h2><button class="rlink" onClick="{{h.goServis}}">İş emirleri</button></div>
-            <sc-for list="{{sh.ready}}" as="r" hint-placeholder-count="2">
-              <div class="hrow"><span class="plate">{{r.plate}}</span><span class="hmain"><b>{{r.name}}</b><span>{{r.amt}}</span></span><button class="tbtn pri" onClick="{{r.pay}}" style="height: 40px">Ödemeye aktar</button></div>
-            </sc-for>
-            <sc-if value="{{sh.noReady}}" hint-placeholder-val="{{false}}"><div class="hempty">Teslime hazır motor yok.</div></sc-if>
-          </div>
-          <div class="hcard">
-            <div class="hhead"><h2>Tahsil edilecek veresiye</h2><span class="sub mono">{{sh.debtTotal}}</span></div>
-            <sc-for list="{{sh.debts}}" as="r" hint-placeholder-count="3">
-              <div class="hrow"><span class="av" style="width: 36px; height: 36px; font-size: 13px">{{r.initials}}</span><span class="hmain"><b>{{r.name}}</b></span><b class="mono" style="color: var(--warn-ink); font-weight: 600; margin-right: 8px">{{r.amt}}</b><button class="tbtn" onClick="{{r.go}}" style="height: 40px">Tahsilat al</button></div>
-            </sc-for>
-          </div>
-          <div class="hcard">
-            <div class="hhead"><h2>Satışı kaçırmayın</h2><span class="sub">Azalan ürünler</span></div>
-            <sc-for list="{{sh.risk}}" as="r" hint-placeholder-count="4">
-              <div class="hrow"><span class="hthumb"><sc-if value="{{r.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{r.photo}}" alt=""></sc-if></span><span class="hmain"><b>{{r.name}}</b><span class="shrs"><span class="{{r.stCls}}">{{r.st}}</span><span>{{r.sold}}</span></span></span><button class="{{r.btnCls}}" onClick="{{r.order}}" style="height: 40px">{{r.btn}}</button></div>
-            </sc-for>
-            <sc-if value="{{sh.noRisk}}" hint-placeholder-val="{{false}}"><div class="hempty">Tüm ürünlerde stok yeterli.</div></sc-if>
-          </div>
+        <div class="calbar">
+          <div class="search" style="height: 44px; flex: 1 1 260px; max-width: 360px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.5a6.5 6.5 0 1 0 .01 0zM16 16l4.5 4.5"></path></svg><input value="{{cv.q}}" onChange="{{cv.onQ}}" placeholder="Etkinliklerde ara" aria-label="Etkinliklerde ara"><sc-if value="{{cv.hasQ}}" hint-placeholder-val="{{false}}"><button class="iconbtn" onClick="{{cv.clearQ}}" aria-label="Temizle"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></sc-if></div>
+          <sc-for list="{{cv.cats}}" as="c" hint-placeholder-count="6"><button class="{{c.cls}}" onClick="{{c.pick}}"><i style="{{c.dot}}"></i>{{c.label}}<em>{{c.n}}</em></button></sc-for>
+          <sc-if value="{{cv.hasFilter}}" hint-placeholder-val="{{false}}"><button class="tbtn plain" onClick="{{cv.clear}}" style="height: 38px">Filtreyi temizle</button></sc-if>
         </div>
+        <sc-if value="{{cv.isMonth}}" hint-placeholder-val="{{true}}">
+          <div class="calm">
+            <sc-for list="{{cv.dn}}" as="d" hint-placeholder-count="7"><div class="cmh">{{d.label}}</div></sc-for>
+            <sc-for list="{{cv.cells}}" as="c" hint-placeholder-count="35">
+              <div class="{{c.cls}}" onClick="{{c.add}}" onDragOver="{{c.over}}" onDrop="{{c.drop}}">
+                <span class="{{c.numCls}}">{{c.num}}</span>
+                <sc-for list="{{c.evs}}" as="e" hint-placeholder-count="1"><button class="{{e.cls}}" style="{{e.style}}" onClick="{{e.open}}" draggable="true" onDragStart="{{e.drag}}" title="{{e.tip}}"><span class="evt1">{{e.time}}</span>{{e.title}}</button></sc-for>
+                <sc-if value="{{c.hasMore}}" hint-placeholder-val="{{false}}"><span class="cmore">{{c.more}}</span></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{cv.isWeek}}" hint-placeholder-val="{{false}}">
+          <div class="calw">
+            <div class="cwh0"></div>
+            <sc-for list="{{cv.wdays}}" as="d" hint-placeholder-count="7"><div class="{{d.cls}}"><b>{{d.label}}</b><span>{{d.num}}</span></div></sc-for>
+            <sc-for list="{{cv.wrows}}" as="r" hint-placeholder-count="13">
+              <div class="cwt mono">{{r.label}}</div>
+              <sc-for list="{{r.cells}}" as="c" hint-placeholder-count="7"><div class="{{c.cls}}" onClick="{{c.add}}" onDragOver="{{c.over}}" onDrop="{{c.drop}}"><sc-for list="{{c.evs}}" as="e" hint-placeholder-count="1"><button class="{{e.cls}}" style="{{e.style}}" onClick="{{e.open}}" draggable="true" onDragStart="{{e.drag}}" title="{{e.tip}}"><span class="evt1">{{e.time}}</span>{{e.title}}</button></sc-for></div></sc-for>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{cv.isDay}}" hint-placeholder-val="{{false}}">
+          <div class="cald">
+            <sc-for list="{{cv.drows}}" as="r" hint-placeholder-count="13">
+              <div class="cdr" onDragOver="{{r.over}}" onDrop="{{r.drop}}">
+                <div class="cwt mono">{{r.label}}</div>
+                <div class="cdc" onClick="{{r.add}}"><sc-for list="{{r.evs}}" as="e" hint-placeholder-count="1"><button class="evd" style="{{e.style}}" onClick="{{e.open}}" draggable="true" onDragStart="{{e.drag}}"><b>{{e.title}}</b><span>{{e.range}} · {{e.cat}}</span><sc-if value="{{e.desc}}" hint-placeholder-val="{{false}}"><em>{{e.desc}}</em></sc-if></button></sc-for></div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{cv.isList}}" hint-placeholder-val="{{false}}">
+          <div class="call">
+            <sc-for list="{{cv.groups}}" as="g" hint-placeholder-count="3">
+              <div class="clg"><h3>{{g.label}}</h3>
+                <sc-for list="{{g.items}}" as="e" hint-placeholder-count="2"><div class="cli" style="{{e.style}}" onClick="{{e.open}}" role="button" tabindex="0"><button class="clchk" onClick="{{e.toggle}}" aria-label="Tamamlandı olarak işaretle"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></button><span class="hmain"><b>{{e.title}}</b><span>{{e.range}} · {{e.cat}}</span><sc-if value="{{e.desc}}" hint-placeholder-val="{{false}}"><em>{{e.desc}}</em></sc-if></span><sc-if value="{{e.tags}}" hint-placeholder-val="{{false}}"><span class="cltag">{{e.tags}}</span></sc-if></div></sc-for>
+              </div>
+            </sc-for>
+            <sc-if value="{{cv.noGroups}}" hint-placeholder-val="{{false}}"><div class="hempty" style="text-align: center; padding: 48px 0">Etkinlik bulunamadı.</div></sc-if>
+          </div>
+        </sc-if>
       </div>
     </section>
   </sc-if>
@@ -1571,6 +1861,23 @@ label.tbtn{position:relative;cursor:pointer}
       </div>
     </aside>
   </sc-if>
+  <sc-if value="{{evOn}}" hint-placeholder-val="{{false}}">
+    <div class="pdscrim" onClick="{{ed.close}}"></div>
+    <div class="exw" role="dialog" aria-modal="true" aria-labelledby="ev-h" style="width: 520px">
+      <div class="pdh" style="padding-bottom: 4px"><h2 id="ev-h" class="pdt1" style="flex: 1">{{ed.title}}</h2><button class="iconbtn" onClick="{{ed.close}}" aria-label="Kapat"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+      <div class="pdb" style="padding-top: 6px">
+        <label class="fld">Başlık<input class="inp" value="{{ed.name}}" onChange="{{ed.setName}}" placeholder="Ör. Ayşe Demir · marş motoru"></label>
+        <label class="fld">Açıklama<textarea class="inp" value="{{ed.desc}}" onChange="{{ed.setDesc}}" rows="2" placeholder="Not, plaka, tutar…"></textarea></label>
+        <div class="set2"><label class="fld">Başlangıç<input class="inp mono" type="datetime-local" value="{{ed.start}}" onChange="{{ed.setStart}}"></label><label class="fld">Bitiş<input class="inp mono" type="datetime-local" value="{{ed.end}}" onChange="{{ed.setEnd}}"></label></div>
+        <div class="set2"><label class="fld">Kategori<select class="inp" value="{{ed.cat}}" onChange="{{ed.setCat}}"><sc-for list="{{ed.cats}}" as="c" hint-placeholder-count="6"><option value="{{c.id}}">{{c.label}}</option></sc-for></select></label>
+          <div class="fld">Renk<div class="evsws"><sc-for list="{{ed.colors}}" as="c" hint-placeholder-count="7"><button class="{{c.cls}}" style="{{c.style}}" onClick="{{c.pick}}" aria-label="{{c.label}}"></button></sc-for></div></div></div>
+        <div class="fld">Etiketler<div class="evts"><sc-for list="{{ed.tags}}" as="t" hint-placeholder-count="5"><button class="{{t.cls}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for></div></div>
+        <div class="fld">Durum<div class="seg2w"><button class="{{ed.openCls}}" onClick="{{ed.setOpen}}">Bekliyor</button><button class="{{ed.doneCls}}" onClick="{{ed.setDone}}">Tamamlandı</button></div></div>
+      </div>
+      <sc-if value="{{ed.hasErr}}" hint-placeholder-val="{{false}}"><div class="pderr" role="alert">{{ed.err}}</div></sc-if>
+      <div class="pdf"><sc-if value="{{ed.notNew}}" hint-placeholder-val="{{false}}"><button class="{{ed.delCls}}" onClick="{{ed.del}}" style="height: 46px">{{ed.delLabel}}</button></sc-if><button class="tbtn plain" onClick="{{ed.close}}" style="height: 46px; margin-left: auto">Vazgeç</button><button class="tbtn pri" onClick="{{ed.save}}" style="height: 46px; min-width: 120px">Kaydet</button></div>
+    </div>
+  </sc-if>
   <sc-if value="{{expOn}}" hint-placeholder-val="{{false}}">
     <div class="pdscrim" onClick="{{ex.close}}"></div>
     <div class="exw" role="dialog" aria-modal="true" aria-labelledby="ex-h">
@@ -1742,7 +2049,7 @@ class Component extends DCLogic {
     const scene = props.scene ?? '__SCENE__';
     const dark = props.dark ?? __DARK__;
     const full = [ { key: 'motul', pid: 'motul', qty: 2 }, { key: 'buji', pid: 'buji', qty: 1 }, { key: 'elcik:siyah', pid: 'elcik', variant: 'siyah', qty: 1 } ];
-    const s = { stokCat: 'all', ordered: {}, cat: null, payStep: null, rec: '', custOpen: false, customers: this.CUSTS0, orders: this.ORDERS0, sales: this.SALES0, coll: [], serviceId: null, sp: null, draft: null, partQ: '', soErr: '', svTab: 'all', caTab: 'm', caQ: '', cp: null, tahOpen: false, tah: '', tahM: 'Nakit', eodAsk: false, eodText: '', page: 'satis', stokTab: 'hepsi', sq: '', servisTab: 'hepsi', scene, dark, q: '', motor: null, cart: [], customer: null, act: 0, sideOpen: (props.side ?? '__SIDE__') !== 'kapali', notice: null, paid: null, holdPaid: false, discount: 0, discOpen: false, held: [], vars: {}, cq: '', toast: null, cmdOpen: false, cmdQ: '', cmdAct: 0, keysOpen: false, summaryOpen: false, bellOpen: false, motorMenu: false, searchFocus: false, flashId: null, bumpKey: null, newKey: null, sel: null, shownTotal: 0, staticFocus: true, pins: this.loadPins(), qEdit: false, tourOn: false, tourI: 0, tourPos: null, justPin: null, cfg: this.loadCfg(), pd: null, pdDel: false, pdErr: '', pdTab: 'genel', exp: null, pv: 0, newUser: '' };
+    const s = { stokCat: 'all', ordered: {}, cat: null, payStep: null, rec: '', custOpen: false, customers: this.CUSTS0, orders: this.ORDERS0, sales: this.SALES0, coll: [], serviceId: null, sp: null, draft: null, partQ: '', soErr: '', svTab: 'all', caTab: 'm', caQ: '', cp: null, tahOpen: false, tah: '', tahM: 'Nakit', eodAsk: false, eodText: '', page: 'satis', stokTab: 'hepsi', sq: '', servisTab: 'hepsi', scene, dark, q: '', motor: null, cart: [], customer: null, act: 0, sideOpen: (typeof window !== 'undefined' && window.RL_STANDALONE) ? !!this.loadCfg().sidePinned : (props.side ?? '__SIDE__') !== 'kapali', notice: null, paid: null, holdPaid: false, discount: 0, discOpen: false, held: [], vars: {}, cq: '', toast: null, cmdOpen: false, cmdQ: '', cmdAct: 0, keysOpen: false, summaryOpen: false, bellOpen: false, motorMenu: false, searchFocus: false, flashId: null, bumpKey: null, newKey: null, sel: null, shownTotal: 0, staticFocus: true, pins: this.loadPins(), qEdit: false, tourOn: false, tourI: 0, tourPos: null, justPin: null, cfg: this.loadCfg(), events: this.loadEvents(), cal: { date: new Date().toISOString(), view: 'month', q: '', cats: [] }, evd: null, evDel: false, aiMsgs: [], aiIn: '', aiBusy: false, hq: '', sideHover: false, pd: null, pdDel: false, pdErr: '', pdTab: 'genel', exp: null, pv: 0, newUser: '' };
     if (scene === 'dolu') { s.cart = full; s.customer = 1; s.act = 0; }
     if (scene === 'sonuc-yok') { s.q = 'PCX 125 varyatör kayışı'; s.cart = full.slice(0, 2); s.customer = 1; }
     if (scene === 'stok-yok') { s.q = 'balata'; s.motor = 'cbf150'; s.cart = [ { key: 'lastik', pid: 'lastik', qty: 1 } ]; s.act = 1; s.notice = 'balata-arka'; }
@@ -1773,7 +2080,7 @@ class Component extends DCLogic {
     ];
     let h = '';
     try { h = (typeof location !== 'undefined' && location.hash || '').replace('#', ''); } catch (e) {}
-    if (['ana', 'satis', 'stok', 'servis', 'cari', 'kasa', 'ayarlar'].indexOf(h) >= 0) s.page = h;
+    if (['ana', 'satis', 'asistan', 'takvim', 'stok', 'servis', 'cari', 'kasa', 'ayarlar'].indexOf(h) >= 0) s.page = h;
     this.state = s;
   }
 
@@ -1847,6 +2154,170 @@ class Component extends DCLogic {
     return d;
   }
   setCfg(patch) { const cfg = Object.assign({}, this.state.cfg, patch); this.setState({ cfg }); try { window.RL_STANDALONE && localStorage.setItem('rl-cfg', JSON.stringify(cfg)); } catch (er) {} }
+  /* ---------- takvim ---------- */
+  get EVCATS() { return [
+    { id: 'gorev', label: 'Görev', color: '#2F5DA8' }, { id: 'servis', label: 'Servis randevusu', color: '#1F7A4D' }, { id: 'teslimat', label: 'Teslimat', color: '#6A3FA0' },
+    { id: 'odeme', label: 'Ödeme', color: '#B42318' }, { id: 'hatirlatma', label: 'Hatırlatma', color: '#9A5B00' }, { id: 'kisisel', label: 'Kişisel', color: '#C2577A' }]; }
+  get EVTAGS() { return ['Acil', 'Önemli', 'Müşteri', 'Tedarikçi', 'Kasa']; }
+  loadEvents() {
+    try { const v = window.RL_STANDALONE && localStorage.getItem('rl-events'); if (v) { const a = JSON.parse(v); if (Array.isArray(a)) return a; } } catch (er) {}
+    const at = (dd, h, m, dur) => { const d = new Date(); d.setDate(d.getDate() + dd); d.setHours(h, m || 0, 0, 0); const e = new Date(d.getTime() + (dur || 60) * 60000); return [d.toISOString(), e.toISOString()]; };
+    const E = (id, title, desc, t, cat, tags, done) => ({ id, title, desc, start: t[0], end: t[1], cat, color: (this.EVCATS.find((c) => c.id === cat) || {}).color, tags: tags || [], done: !!done });
+    return [
+      E('e1', 'Mehmet Yılmaz · ön fren bakımı', '34 MTR 482 · Honda PCX 125. Balata ve disk kontrolü.', at(0, 10, 0, 90), 'servis', ['Müşteri']),
+      E('e2', 'Öztürk Moto ödemesi', '₺18.400 bakiye. Havale ile kapatılacak.', at(0, 14, 0, 30), 'odeme', ['Tedarikçi', 'Önemli']),
+      E('e3', 'Gün sonu kasa sayımı', 'Nakit ve kart toplamlarını karşılaştır.', at(0, 19, 0, 30), 'gorev', ['Kasa']),
+      E('e4', 'Ege Motosiklet sipariş teslimatı', 'Balata, zincir seti ve buji koli.', at(1, 11, 0, 60), 'teslimat', ['Tedarikçi']),
+      E('e5', 'Ayşe Demir · marş motoru', '34 ADR 117 · Honda Activa. Marş çevirmiyor.', at(1, 15, 30, 120), 'servis', ['Müşteri']),
+      E('e6', 'Kurye Ekspres veresiye tahsilatı', '₺5.300 açık bakiye için ara.', at(2, 10, 30, 30), 'hatirlatma', ['Müşteri', 'Acil']),
+      E('e7', 'Raf düzeni ve sayım', 'Fren ve elektrik rafları.', at(3, 9, 0, 120), 'gorev', []),
+      E('e8', 'Hakan Öztürk · periyodik bakım', 'Bajaj Pulsar NS200, 6.000 km bakımı.', at(4, 13, 0, 90), 'servis', ['Müşteri']),
+      E('e9', 'Kira ödemesi', '', at(6, 10, 0, 30), 'odeme', ['Önemli']),
+      E('e10', 'Stok siparişi verildi', 'Debriyaj teli ve karbüratör takımı.', at(-1, 16, 0, 30), 'gorev', ['Tedarikçi'], true),
+      E('e11', 'Yeni sezon kask kampanyası', 'Vitrin ve sosyal medya.', at(8, 12, 0, 60), 'hatirlatma', []),
+      E('e12', 'Muhasebeci görüşmesi', 'Aylık KDV evrakları.', at(10, 11, 0, 60), 'kisisel', ['Önemli'])
+    ];
+  }
+  saveEvents(events) { this.setState({ events }); try { window.RL_STANDALONE && localStorage.setItem('rl-events', JSON.stringify(events)); } catch (er) {} }
+  dIn(iso) { const d = new Date(iso); const z = (n) => String(n).padStart(2, '0'); return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()) + 'T' + z(d.getHours()) + ':' + z(d.getMinutes()); }
+  sameDay(a, b) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+  hm(iso) { const d = new Date(iso); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+  openEvent(ev, at) {
+    if (ev) { this.setState({ evd: Object.assign({}, ev, { tags: (ev.tags || []).slice() }), evDel: false }); return; }
+    const d = at ? new Date(at) : new Date(); if (!at) { d.setMinutes(0, 0, 0); d.setHours(Math.min(20, d.getHours() + 1)); }
+    this.setState({ evd: { id: null, title: '', desc: '', start: d.toISOString(), end: new Date(d.getTime() + 3600000).toISOString(), cat: 'gorev', color: this.EVCATS[0].color, tags: [], done: false }, evDel: false });
+  }
+  evSet(patch) { this.setState({ evd: Object.assign({}, this.state.evd, patch), evErr: '' }); }
+  evSave() {
+    const d = this.state.evd; if (!String(d.title || '').trim()) { this.setState({ evErr: 'Başlık girin.' }); return; }
+    if (new Date(d.end) < new Date(d.start)) { this.setState({ evErr: 'Bitiş, başlangıçtan önce olamaz.' }); return; }
+    const ev = Object.assign({}, d, { title: String(d.title).trim() });
+    const list = this.state.events.slice(); const i = list.findIndex((x) => x.id === ev.id);
+    if (i >= 0) list[i] = ev; else { ev.id = 'e' + Date.now().toString(36); list.push(ev); }
+    this.saveEvents(list); this.setState({ evd: null }); this.flashToast(i >= 0 ? 'Etkinlik güncellendi.' : 'Etkinlik eklendi.');
+  }
+  evDelete() { if (!this.state.evDel) { this.setState({ evDel: true }); return; } this.saveEvents(this.state.events.filter((x) => x.id !== this.state.evd.id)); this.setState({ evd: null }); this.flashToast('Etkinlik silindi.'); }
+  evMove(id, day, hour) {
+    const list = this.state.events.slice(); const i = list.findIndex((x) => x.id === id); if (i < 0) return;
+    const ev = list[i]; const st = new Date(ev.start), en = new Date(ev.end); const dur = en - st;
+    const ns = new Date(day); ns.setHours(hour != null ? hour : st.getHours(), hour != null ? 0 : st.getMinutes(), 0, 0);
+    list[i] = Object.assign({}, ev, { start: ns.toISOString(), end: new Date(ns.getTime() + dur).toISOString() });
+    this.saveEvents(list); this.flashToast('Taşındı: ' + ev.title);
+  }
+  calShift(dir) { const c = this.state.cal; const d = new Date(c.date); if (c.view === 'month') d.setMonth(d.getMonth() + dir, 1); else if (c.view === 'week') d.setDate(d.getDate() + 7 * dir); else d.setDate(d.getDate() + dir); this.setState({ cal: Object.assign({}, c, { date: d.toISOString() }) }); }
+  calVals(s) {
+    const c = s.cal; const cur = new Date(c.date); const today = new Date(); const q = this.norm(c.q || '').trim();
+    const evs = s.events.filter((e) => (!c.cats.length || c.cats.indexOf(e.cat) >= 0) && (!q || this.norm(e.title + ' ' + (e.desc || '') + ' ' + (e.tags || []).join(' ')).indexOf(q) >= 0)).sort((a, b) => new Date(a.start) - new Date(b.start));
+    const catOf = (e) => this.EVCATS.find((x) => x.id === e.cat) || this.EVCATS[0];
+    const chip = (e) => ({ title: e.title, time: this.hm(e.start), range: this.hm(e.start) + '–' + this.hm(e.end), desc: e.desc || '', cat: catOf(e).label, tags: (e.tags || []).join(' · '),
+      cls: 'evc' + (e.done ? ' done' : ''), style: '--ec: ' + (e.color || catOf(e).color), tip: e.title + ' · ' + this.hm(e.start) + '–' + this.hm(e.end) + (e.desc ? '\n' + e.desc : ''),
+      open: (ev) => { ev && ev.stopPropagation && ev.stopPropagation(); this.openEvent(e); },
+      drag: (ev) => { this._drag = e.id; try { ev.dataTransfer.effectAllowed = 'move'; ev.dataTransfer.setData('text/plain', e.id); } catch (er) {} },
+      toggle: (ev) => { ev && ev.stopPropagation && ev.stopPropagation(); this.saveEvents(this.state.events.map((x) => x.id === e.id ? Object.assign({}, x, { done: !x.done }) : x)); } });
+    const dayEvs = (d) => evs.filter((e) => this.sameDay(new Date(e.start), d));
+    const drop = (d, h) => (ev) => { ev && ev.preventDefault && ev.preventDefault(); const id = this._drag || (ev && ev.dataTransfer && ev.dataTransfer.getData('text/plain')); this._drag = null; if (id) this.evMove(id, d, h); };
+    const over = (ev) => { ev.preventDefault(); };
+    const mon = (d) => { const x = new Date(d); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; };
+    const DN = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+    // ay
+    const first = new Date(cur.getFullYear(), cur.getMonth(), 1); const start = mon(first);
+    const cells = []; for (let i = 0; i < 42; i++) { const d = new Date(start); d.setDate(start.getDate() + i); const de = dayEvs(d);
+      cells.push({ num: String(d.getDate()), cls: 'cmc' + (d.getMonth() !== cur.getMonth() ? ' out' : '') + ((d.getDay() + 6) % 7 >= 5 ? ' we' : ''), numCls: 'cmn' + (this.sameDay(d, today) ? ' today' : ''),
+        evs: de.slice(0, 3).map(chip), more: de.length > 3 ? '+' + (de.length - 3) + ' etkinlik' : '', hasMore: de.length > 3,
+        add: () => { const t = new Date(d); t.setHours(9, 0, 0, 0); this.openEvent(null, t.toISOString()); }, drop: drop(d), over }); }
+    // hafta
+    const ws = mon(cur); const wdays = []; for (let i = 0; i < 7; i++) { const d = new Date(ws); d.setDate(ws.getDate() + i); wdays.push(d); }
+    const HRS = []; for (let h = 8; h <= 20; h++) HRS.push(h);
+    const wrows = HRS.map((h) => ({ label: String(h).padStart(2, '0') + ':00', cells: wdays.map((d) => ({ evs: dayEvs(d).filter((e) => new Date(e.start).getHours() === h || (h === 8 && new Date(e.start).getHours() < 8) || (h === 20 && new Date(e.start).getHours() > 20)).map(chip), cls: 'cwc' + (this.sameDay(d, today) ? ' today' : ''),
+      add: () => { const t = new Date(d); t.setHours(h, 0, 0, 0); this.openEvent(null, t.toISOString()); }, drop: drop(d, h), over })) }));
+    // gün
+    const drows = HRS.map((h) => ({ label: String(h).padStart(2, '0') + ':00', evs: dayEvs(cur).filter((e) => new Date(e.start).getHours() === h || (h === 8 && new Date(e.start).getHours() < 8) || (h === 20 && new Date(e.start).getHours() > 20)).map(chip),
+      add: () => { const t = new Date(cur); t.setHours(h, 0, 0, 0); this.openEvent(null, t.toISOString()); }, drop: drop(cur, h), over }));
+    // liste
+    const groups = []; evs.forEach((e) => { const d = new Date(e.start); const key = d.toDateString(); let g = groups.find((x) => x.key === key); if (!g) { g = { key, label: d.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) + (this.sameDay(d, today) ? ' · Bugün' : ''), items: [] }; groups.push(g); } g.items.push(chip(e)); });
+    const title = c.view === 'month' ? cur.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' }) : c.view === 'week' ? wdays[0].toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' }) + ' – ' + wdays[6].toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) : c.view === 'day' ? cur.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'Tüm etkinlikler';
+    const setC = (patch) => this.setState({ cal: Object.assign({}, this.state.cal, patch) });
+    const todayEvs = s.events.filter((e) => this.sameDay(new Date(e.start), today)).sort((a, b) => new Date(a.start) - new Date(b.start));
+    return { title, isMonth: c.view === 'month', isWeek: c.view === 'week', isDay: c.view === 'day', isList: c.view === 'list',
+      views: [['month', 'Ay'], ['week', 'Hafta'], ['day', 'Gün'], ['list', 'Liste']].map((v) => ({ label: v[1], cls: 'seg2' + (c.view === v[0] ? ' on' : ''), pick: () => setC({ view: v[0] }) })),
+      prev: () => this.calShift(-1), next: () => this.calShift(1), today: () => setC({ date: new Date().toISOString() }), notList: c.view !== 'list',
+      q: c.q, onQ: (e) => setC({ q: e.target.value }), hasQ: !!c.q, clearQ: () => setC({ q: '' }),
+      cats: this.EVCATS.map((x) => ({ label: x.label, dot: 'background: ' + x.color, n: String(s.events.filter((e) => e.cat === x.id).length), cls: 'evf' + (c.cats.indexOf(x.id) >= 0 ? ' on' : ''), pick: () => setC({ cats: c.cats.indexOf(x.id) >= 0 ? c.cats.filter((y) => y !== x.id) : c.cats.concat([x.id]) }) })),
+      hasFilter: c.cats.length > 0 || !!c.q, clear: () => setC({ cats: [], q: '' }),
+      dn: DN.map((d) => ({ label: d })), cells,
+      wdays: wdays.map((d, i) => ({ label: DN[i], num: d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }), cls: 'cwh' + (this.sameDay(d, today) ? ' today' : '') })), wrows, drows,
+      groups, noGroups: !groups.length,
+      newEv: () => this.openEvent(null),
+      todayList: todayEvs.slice(0, 4).map(chip), todayN: todayEvs.length + ' etkinlik', noToday: !todayEvs.length, openCal: () => this.go('takvim') };
+  }
+  /* ---------- asistan ---------- */
+  aiContext() {
+    const s = this.state; const sum = s.sales.reduce((a, x) => a + x.total, 0); const by = {}; s.sales.forEach((x) => { by[x.method] = (by[x.method] || 0) + x.total; });
+    const agg = {}; s.sales.forEach((x) => x.items.forEach((i) => { if (!i.pid) return; agg[i.name] = (agg[i.name] || 0) + i.qty; }));
+    const L = s.cfg.lowStock || 5; const stockOf = (p) => p.variants ? p.variants.reduce((a, v) => a + v.stock, 0) : p.stock;
+    return JSON.stringify({ isletme: s.cfg.shop + ' · ' + s.cfg.branch, tarih: new Date().toLocaleString('tr-TR'),
+      bugun: { ciro: sum, fis: s.sales.length, hedef: s.cfg.target, odeme: by, en_cok_satan: Object.keys(agg).sort((a, b) => agg[b] - agg[a]).slice(0, 5).map((k) => k + ' ×' + agg[k]) },
+      azalan_stok: this.P.filter((p) => stockOf(p) < L).map((p) => p.name + ' (' + stockOf(p) + ' adet)'),
+      veresiye: s.customers.filter((c) => c.type === 'm' && this.bal(c) > 0).map((c) => c.name + ': ₺' + this.bal(c)),
+      tedarikci_borcu: s.customers.filter((c) => c.type === 't' && this.bal(c) < 0).map((c) => c.name + ': ₺' + Math.abs(this.bal(c))),
+      servis: s.orders.filter((o) => o.status !== 'Teslim edildi').map((o) => o.plate + ' ' + o.name + ' · ' + o.status + ' · ' + o.complaint),
+      takvim_bugun: s.events.filter((e) => this.sameDay(new Date(e.start), new Date())).map((e) => this.hm(e.start) + ' ' + e.title + (e.done ? ' (tamam)' : '')),
+      fis_su_an: s.cart.map((l) => (l.pid ? this.byId[l.pid].name : l.name) + ' ×' + l.qty) });
+  }
+  aiLocal(text) {
+    const s = this.state; const t = this.norm(text); const sum = s.sales.reduce((a, x) => a + x.total, 0);
+    const L = s.cfg.lowStock || 5; const stockOf = (p) => p.variants ? p.variants.reduce((a, v) => a + v.stock, 0) : p.stock;
+    if (/satis|ciro|ozet|bugun/.test(t)) { const by = {}; s.sales.forEach((x) => { by[x.method] = (by[x.method] || 0) + x.total; });
+      return 'Bugün ' + s.sales.length + ' fişte ' + this.money(sum, false) + ' satış yapıldı. Günlük hedefin %' + Math.round(sum / (s.cfg.target || 1) * 100) + "'i tamam.\n" + Object.keys(by).map((k) => '- ' + k + ': ' + this.money(by[k], false)).join('\n'); }
+    if (/stok|azal|bit|siparis/.test(t)) { const low = this.P.filter((p) => stockOf(p) < L); return low.length ? 'Stoğu ' + L + ' adedin altına düşen ürünler:\n' + low.map((p) => '- ' + p.name + ': ' + (stockOf(p) ? stockOf(p) + ' adet' : 'stokta yok')).join('\n') : 'Tüm ürünlerde stok yeterli.'; }
+    if (/veresiye|borc|tahsil/.test(t)) { const d = s.customers.filter((c) => c.type === 'm' && this.bal(c) > 0); return 'Tahsil edilecek veresiyeler:\n' + d.map((c) => '- ' + c.name + ': ' + this.money(this.bal(c), false)).join('\n'); }
+    if (/gorev|takvim|randevu|ajanda/.test(t)) { const e = s.events.filter((x) => this.sameDay(new Date(x.start), new Date())); return e.length ? 'Bugünkü takvim:\n' + e.map((x) => '- ' + this.hm(x.start) + ' ' + x.title).join('\n') : 'Bugün takvimde etkinlik yok.'; }
+    return 'Şu an çevrimdışı çalışıyorum; satış özeti, azalan stok, veresiye ve bugünkü takvim hakkında soru sorabilirsiniz.';
+  }
+  async aiSend(textIn) {
+    const text = String(textIn == null ? this.state.aiIn : textIn).trim(); if (!text || this.state.aiBusy) return;
+    const hist = this.state.aiMsgs.concat([{ role: 'user', text }]);
+    const upd = (t, extra) => this.setState({ aiMsgs: hist.concat([Object.assign({ role: 'assistant', text: t }, extra || {})]) });
+    this.setState({ aiIn: '', aiBusy: true }); upd('', { pending: true });
+    setTimeout(() => { const el = document.querySelector('.aiscroll'); if (el) el.scrollTop = el.scrollHeight; }, 30);
+    let sample = null; try { sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; } catch (er) {}
+    if (!sample) { upd(this.aiLocal(text), { local: true }); this.setState({ aiBusy: false }); return; }
+    const RULES = 'Sen Rölanti adlı motosiklet yedek parça ve servis dükkanı yazılımının asistanısın. Türkçe, kısa ve net yaz; gerekirse "- " ile madde kullan, başlık ve tablo kullanma. Sayıları yalnızca aşağıdaki verilerden al, uydurma. Ürün eklemek, fişe koymak ya da takvime görev yazmak istenirse araçları kullan ve ne yaptığını tek cümleyle söyle.\nDÜKKAN VERİLERİ (JSON):\n' + this.aiContext();
+    const turns = [{ role: 'user', content: RULES }].concat(hist.slice(-12).map((m) => ({ role: m.role, content: m.text || '…' })));
+    let tools; try { const lim = await sample.limits(); if (lim && lim.tools) tools = [
+      { name: 'urun_ara', description: 'Ürün kataloğunda arar. Ad, stok kodu, OEM ya da motor modeline göre en fazla 8 ürün döndürür: id, ad, stok_kodu, fiyat, stok.', inputSchema: { type: 'object', properties: { sorgu: { type: 'string' } }, required: ['sorgu'] },
+        execute: (i) => this.results(Object.assign({}, this.state, { q: String(i.sorgu || ''), cat: null, motor: null })).slice(0, 8).map((p) => ({ id: p.id, ad: p.name, stok_kodu: p.sku, fiyat: p.price, stok: p.variants ? p.variants.reduce((a, v) => a + v.stock, 0) : p.stock })) },
+      { name: 'fise_ekle', description: 'Bir ürünü açık satış fişine ekler. id urun_ara sonucundan gelir. Eklenen ürünü ve fiş toplamını döndürür.', inputSchema: { type: 'object', properties: { id: { type: 'string' }, adet: { type: 'number' } }, required: ['id'] },
+        execute: (i) => { const p = this.byId[String(i.id)]; if (!p) throw new Error('Ürün bulunamadı'); const n = Math.max(1, Math.min(20, Math.round(Number(i.adet) || 1))); for (let k = 0; k < n; k++) this.add(p); return { eklendi: p.name + ' ×' + n, fis_toplami: this.calc(this.state).total }; } },
+      { name: 'takvime_ekle', description: 'Takvime görev ya da randevu ekler. tarih YYYY-AA-GG, saat SS:DD biçiminde; kategori gorev, servis, teslimat, odeme, hatirlatma ya da kisisel.', inputSchema: { type: 'object', properties: { baslik: { type: 'string' }, tarih: { type: 'string' }, saat: { type: 'string' }, sure_dk: { type: 'number' }, kategori: { type: 'string' }, aciklama: { type: 'string' } }, required: ['baslik', 'tarih', 'saat'] },
+        execute: (i) => { const st = new Date(String(i.tarih) + 'T' + String(i.saat || '09:00')); if (isNaN(st)) throw new Error('Tarih ya da saat okunamadı'); const cat = this.EVCATS.find((c) => c.id === i.kategori) || this.EVCATS[0]; const ev = { id: 'e' + Date.now().toString(36), title: String(i.baslik), desc: String(i.aciklama || ''), start: st.toISOString(), end: new Date(st.getTime() + (Number(i.sure_dk) || 60) * 60000).toISOString(), cat: cat.id, color: cat.color, tags: [], done: false }; this.saveEvents(this.state.events.concat([ev])); return { eklendi: ev.title, baslangic: st.toLocaleString('tr-TR') }; } }
+    ]; } catch (er) {}
+    this._aiCtl = new AbortController();
+    try {
+      const r = await sample(turns, { cache: false, modelTier: 'quick', signal: this._aiCtl.signal, tools, onText: ({ text: t }) => { upd(t); const el = document.querySelector('.aiscroll'); if (el) el.scrollTop = el.scrollHeight; } });
+      upd(r.text + (r.truncated ? '\n(Yanıt kısaldı.)' : ''));
+    } catch (e) {
+      const code = e && e.code;
+      if (code === 'cancelled') upd((e.text || '') + (e.text ? '\n' : '') + '(Durduruldu.)');
+      else if (code === 'not_granted' || code === 'sampling_disabled' || code === 'not_declared' || code === 'capability_disabled') upd(this.aiLocal(text), { local: true });
+      else if (code === 'rate_limited') upd('Şu an çok fazla istek var. Biraz sonra tekrar deneyin.');
+      else upd((e && e.text) || 'Yanıt alınamadı. Lütfen tekrar deneyin.');
+    }
+    this.setState({ aiBusy: false });
+  }
+  aiVals(s) {
+    const first = String(s.cfg.owner || 'Emre').split(' ')[0];
+    const lines = (t) => String(t || '').replace(/\*\*/g, '').split('\n').filter((x) => x.trim()).map((x) => /^\s*[-•*]\s+/.test(x) ? { t: x.replace(/^\s*[-•*]\s+/, ''), cls: 'ail li' } : { t: x, cls: 'ail' });
+    return { pgCls: 'pg aipg' + (s.aiMsgs.length ? '' : ' empty'), empty: !s.aiMsgs.length, hasMsgs: s.aiMsgs.length > 0, greet: 'Ne yapalım, ' + first + '?', input: s.aiIn, busy: s.aiBusy, idle: !s.aiBusy,
+      onIn: (e) => this.setState({ aiIn: e.target.value }), key: (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.aiSend(); } },
+      send: () => this.aiSend(), stop: () => { try { this._aiCtl && this._aiCtl.abort(); } catch (er) {} }, reset: () => this.setState({ aiMsgs: [] }),
+      sendCls: 'aisend' + (String(s.aiIn).trim() ? ' on' : ''),
+      sugg: [['Bugünün satış özeti', 'Ciro, fiş ve ödeme dağılımı', 'Bugünün satış özetini çıkar, hedefe ne kadar kaldı?', 'M4 19V9M10 19V5M16 19v-7M3 19.5h18'],
+        ['Ne sipariş vermeliyim?', 'Azalan ve çok satan ürünler', 'Stoğu azalan ürünlere ve bugünkü satışlara bakarak ne sipariş vermemi önerirsin?', 'M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5L12 11.5l8.5-4M12 11.5v9'],
+        ['Veresiye takibi', 'Kimi aramalıyım?', 'Tahsil edilecek veresiyeleri sırala ve önce kimi aramam gerektiğini söyle.', 'M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M17 7h5M19.5 4.5v5'],
+        ['Bugünün planı', 'Servis ve görevler', 'Bugün takvimde ve serviste neler var? Kısaca sırala.', 'M4.5 6.5h15v13h-15zM4.5 10.5h15M8.5 4v4M15.5 4v4M8 14h2M11 14h2M14 14h2M8 17h2M11 17h2']].map((x) => ({ title: x[0], hint: x[1], icon: x[3], go: () => this.aiSend(x[2]) })),
+      msgs: s.aiMsgs.map((m) => ({ cls: 'aim ' + m.role, isUser: m.role === 'user', isBot: m.role !== 'user', text: m.text, lines: lines(m.text), pending: !!m.pending && !m.text, local: !!m.local })) };
+  }
   /* ---------- ürün detayı ---------- */
   openProduct(id) {
     const p = id ? this.byId[id] : null;
@@ -2085,7 +2556,7 @@ class Component extends DCLogic {
     { t: '#t-fis', title: 'Fiş', content: 'Eklediğiniz ürünler burada. Adedi + ve − ile değiştirin, veresiye için müşteri ekleyin.', place: 'left' },
     { t: '#t-ode', title: 'Ödeme al', content: 'F9 ile ödemeye geçin, 1–4 tuşlarıyla yöntemi seçin. Nakitte para üstü otomatik hesaplanır.', place: 'top' },
     { t: '#t-genel', title: 'Her şeyi arayın', content: 'Ctrl K ile müşteri, plaka, iş emri ya da fişe her sayfadan ulaşın.', place: 'bottom' },
-    { t: '#t-nav', title: 'Hepsi bu kadar', content: 'Servis, cari hesaplar ve kasa raporu soldaki menüde. Turu buradaki "Tanıtım turu" ile yeniden izleyebilirsiniz.', place: 'right' },
+    { t: '#t-nav', title: 'Hepsi bu kadar', content: 'Asistan, takvim, servis, cari ve kasa raporu soldaki menüde; menü üzerine gelince açılır. Turu buradaki "Tanıtım turu" ile yeniden izleyebilirsiniz.', place: 'right' },
   ]; }
   startTour() {
     this.setState({ page: 'satis', cat: null, q: '', motor: null, cmdOpen: false, qEdit: false, tourOn: true, tourI: 0, tourPos: null });
@@ -2250,8 +2721,17 @@ class Component extends DCLogic {
       if (k === 'Enter') { e.preventDefault(); const c = cmds[s.cmdAct]; if (c) c.run(); return; }
       return;
     }
-    if (k === 'Escape' && (s.pd || s.exp)) { e.preventDefault(); this.setState({ pd: null, exp: null }); return; }
-    if (s.pd || s.exp) return;
+    if (k === 'Escape' && (s.pd || s.exp || s.evd)) { e.preventDefault(); this.setState({ pd: null, exp: null, evd: null }); return; }
+    if (s.pd || s.exp || s.evd) return;
+    if (s.page === 'ana') {
+      if (k === 'F9') { e.preventDefault(); if (!s.payStep) this.openPay(); else if (s.payStep === 'choose') this.choose('Nakit'); else this.completeCash(); return; }
+      const mapA = { F10: 'Kart', F11: 'Havale', F12: 'Veresiye' }; if (mapA[k]) { e.preventDefault(); this.choose(mapA[k]); return; }
+      if (s.payStep === 'choose' && ['1', '2', '3', '4'].indexOf(k) >= 0) { e.preventDefault(); this.choose(['Nakit', 'Kart', 'Havale', 'Veresiye'][+k - 1]); return; }
+      if (s.payStep === 'cash' && k === 'Enter') { e.preventDefault(); this.completeCash(); return; }
+      if (s.payStep && k === 'Escape') { e.preventDefault(); this.setState({ payStep: s.payStep === 'cash' ? 'choose' : null }); return; }
+      if (!typing && tgt.tagName !== 'TEXTAREA' && k.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && this.hsEl) { e.preventDefault(); this.setState({ hq: (s.hq || '') + k }); this.hsEl.focus(); return; }
+      return;
+    }
     if (s.page !== 'satis') { if (k === 'Escape') { this.setState({ sp: null, cp: null, tahOpen: false, eodAsk: false }); } return; }
     if (!typing && k.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && k !== '/' && k !== '?' && k !== '+' && k !== '-' && this.searchEl) { e.preventDefault(); this.setState({ q: s.q + k, cat: null, act: 0, notice: null, staticFocus: false }); this.searchEl.focus(); return; }
     if (k === 'F9') { e.preventDefault(); if (!s.payStep) this.openPay(); else if (s.payStep === 'choose') this.choose('Nakit'); else this.completeCash(); return; }
@@ -2515,6 +2995,8 @@ class Component extends DCLogic {
     const c = this.calc(s);
     const cust = s.customer ? this.custById(s.customer) : null;
     const ICON = {
+      asistan: 'M12 3.5l1.8 4.9 4.9 1.8-4.9 1.8L12 16.9l-1.8-4.9-4.9-1.8 4.9-1.8zM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z',
+      takvim: 'M4.5 6.5h15v13h-15zM4.5 10.5h15M8.5 4v4M15.5 4v4M8 14h2M11 14h2M14 14h2M8 17h2M11 17h2',
       satis: 'M5.5 8.5h13l-1.1 11.1a1.6 1.6 0 0 1-1.6 1.4H8.2a1.6 1.6 0 0 1-1.6-1.4zM9 8.5V7a3 3 0 0 1 6 0v1.5M12.9 11.3l-2.7 3.9h3.6l-2.6 3.6',
       stok: 'M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5L12 11.5l8.5-4M12 11.5v9',
       servis: 'M14.5 6.5a4 4 0 0 0-5.2 5.2L4 17l3 3 5.3-5.3a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.6-.4-.4-2.6z',
@@ -2522,8 +3004,8 @@ class Component extends DCLogic {
       kasa: 'M3.5 6.5h17v12h-17zM3.5 10.5h17M7 15h3',
       ana: 'M4 10.5L12 4l8 6.5V20h-5.5v-5.5h-5V20H4z'
     };
-    const navs = [ ['ana', 'Ana sayfa'], ['satis', 'Hızlı satış'], ['stok', 'Ürünler & Stok'], ['servis', 'Servis'], ['cari', 'Cari'], ['kasa', 'Kasa & Rapor'] ];
-    const sideOpen = s.sideOpen;
+    const navs = [ ['ana', 'Ana sayfa'], ['satis', 'Hızlı satış'], ['asistan', 'Asistan'], ['takvim', 'Takvim'], ['stok', 'Ürünler & Stok'], ['servis', 'Servis'], ['cari', 'Cari'], ['kasa', 'Kasa & Rapor'] ];
+    const sideOpen = s.sideOpen || s.sideHover;
     const navPad = sideOpen ? '' : 'justify-content: center; padding: 0; width: 48px; margin: 0 auto;';
     const qn = this.norm(s.q).trim();
     const motorObj = s.motor ? this.MOTORS.find((m) => m.id === s.motor) : null;
@@ -2647,15 +3129,18 @@ class Component extends DCLogic {
       .filter((x) => s.servisTab === 'hepsi' || x.stv === s.servisTab);
     const methods = [['Nakit', 9250], ['Kart', 6480], ['Havale', 670], ['Veresiye', 2000]];
     const kasaSum = methods.reduce((a, m) => a + m[1], 0);
-    const sideW = sideOpen ? 232 : 76;
+    const sideW = s.sideOpen ? 232 : 76; const sideInW = sideOpen ? 232 : 76;
     return {
       theme: dark ? 'dark' : 'light', isDark: dark, isLight: !dark,
       lightCls: dark ? '' : 'on', darkCls: dark ? 'on' : '',
       setLight: () => this.setState({ dark: false }), setDark: () => this.setState({ dark: true }),
       onKey: (e) => { if (!this.photos) this.onKey(e); },
       sideOpen, sideClosed: !sideOpen,
-      sideStyle: 'display: flex; flex-direction: column; flex: 0 0 ' + sideW + 'px; width: ' + sideW + 'px; height: 100%; padding: 0 ' + (sideOpen ? '12px' : '14px') + '; transition: flex-basis .22s cubic-bezier(.16,1,.3,1), width .22s cubic-bezier(.16,1,.3,1)',
-      toggleSide: () => this.setState({ sideOpen: !s.sideOpen }),
+      sideStyle: 'position: relative; flex: 0 0 ' + sideW + 'px; width: ' + sideW + 'px; height: 100%; transition: flex-basis .3s cubic-bezier(.16,1,.3,1), width .3s cubic-bezier(.16,1,.3,1)',
+      sideInStyle: 'width: ' + sideInW + 'px; padding: 0 ' + (sideOpen ? '12px' : '14px') + ';' + (s.sideHover && !s.sideOpen ? ' box-shadow: 18px 0 40px -24px rgba(0,0,0,.28); border-radius: 0 18px 18px 0;' : ''),
+      sideEnter: () => { clearTimeout(this._sh); if (!this.state.sideOpen && !this.state.sideHover) this._sh = setTimeout(() => this.setState({ sideHover: true }), 70); },
+      sideLeave: () => { clearTimeout(this._sh); if (this.state.sideHover) this.setState({ sideHover: false }); },
+      toggleSide: () => { this.setState({ sideOpen: !s.sideOpen, sideHover: false }); this.setCfg({ sidePinned: !s.sideOpen }); },
       nav: navs.map((n, i) => ({ label: n[1], icon: ICON[n[0]], cls: 'nav' + (s.page === n[0] ? ' on' : ''), current: s.page === n[0] ? 'page' : 'false', showLabel: sideOpen, style: navPad, go: () => this.go(n[0]) })),
       openSettings: () => this.go('ayarlar'),
       n0style: navPad,
@@ -2672,6 +3157,27 @@ class Component extends DCLogic {
       gridRef: (el) => { this.gridEl = el; },
       tourCardRef: (el) => { this.tourCardEl = el; },
       setNavCls: 'nav' + (s.page === 'ayarlar' ? ' on' : ''),
+      cv: this.calVals(s), ai: this.aiVals(s), aiRef: (el) => { this.aiEl = el; },
+      evOn: !!s.evd,
+      ed: (() => { const d = s.evd; if (!d) return {}; const set = (k) => (e) => { const o = {}; o[k] = e.target.value; this.evSet(o); };
+        return { title: d.id ? 'Etkinliği düzenle' : 'Yeni etkinlik', name: d.title, desc: d.desc || '', start: this.dIn(d.start), end: this.dIn(d.end), cat: d.cat, isNew: !d.id, notNew: !!d.id,
+          setName: set('title'), setDesc: set('desc'), setCat: (e) => { const c = this.EVCATS.find((x) => x.id === e.target.value) || this.EVCATS[0]; this.evSet({ cat: c.id, color: c.color }); },
+          setStart: (e) => { const ns = new Date(e.target.value); if (isNaN(ns)) return; const dur = new Date(d.end) - new Date(d.start); this.evSet({ start: ns.toISOString(), end: new Date(ns.getTime() + Math.max(dur, 900000)).toISOString() }); },
+          setEnd: (e) => { const ne = new Date(e.target.value); if (!isNaN(ne)) this.evSet({ end: ne.toISOString() }); },
+          cats: this.EVCATS.map((c) => ({ id: c.id, label: c.label })),
+          colors: ['#2F5DA8', '#1F7A4D', '#6A3FA0', '#B42318', '#9A5B00', '#C2577A', '#18181B'].map((c) => ({ style: 'background: ' + c, cls: 'evsw' + (d.color === c ? ' on' : ''), pick: () => this.evSet({ color: c }), label: 'Renk ' + c })),
+          tags: this.EVTAGS.map((t) => ({ label: t, cls: 'evt' + ((d.tags || []).indexOf(t) >= 0 ? ' on' : ''), pick: () => this.evSet({ tags: (d.tags || []).indexOf(t) >= 0 ? d.tags.filter((x) => x !== t) : (d.tags || []).concat([t]) }) })),
+          doneCls: 'seg2' + (d.done ? ' on' : ''), openCls: 'seg2' + (!d.done ? ' on' : ''), setDone: () => this.evSet({ done: true }), setOpen: () => this.evSet({ done: false }),
+          err: s.evErr || '', hasErr: !!s.evErr, save: () => this.evSave(), close: () => this.setState({ evd: null }), del: () => this.evDelete(), delLabel: s.evDel ? 'Silmeyi onayla' : 'Sil', delCls: 'tbtn danger' + (s.evDel ? ' sure' : '') }; })(),
+      hsRef: (el) => { this.hsEl = el; },
+      hs: (() => { const qv = s.hq || ''; const res = qv.trim() ? this.results(Object.assign({}, s, { q: qv, cat: null, motor: null })).slice(0, 6) : [];
+        const inC = {}; s.cart.forEach((l) => { inC[l.pid] = (inC[l.pid] || 0) + l.qty; });
+        const stockOf = (p) => p.variants ? p.variants.reduce((a, v) => a + v.stock, 0) : p.stock;
+        return { q: qv, hasQ: !!qv.trim(), noQ: !qv.trim(), none: !!qv.trim() && !res.length,
+          onQ: (e) => this.setState({ hq: e.target.value }), clear: () => { this.setState({ hq: '' }); this.hsEl && this.hsEl.focus(); },
+          key: (e) => { if (e.key === 'Enter') { e.preventDefault(); if (res[0]) { this.add(res[0]); this.setState({ hq: '' }); } } else if (e.key === 'Escape') { this.setState({ hq: '' }); } },
+          res: res.map((p, i) => { const st = stockOf(p); return { name: p.name, sku: p.sku, price: this.money(p.price, false), stock: st ? st + ' adet' : 'Stokta yok', photo: this.pimg(p), hasPhoto: this.photos, cls: 'hsr' + (i === 0 ? ' first' : '') + (st ? '' : ' out'), add: () => { this.add(p); this.setState({ hq: '' }); setTimeout(() => this.hsEl && this.hsEl.focus(), 20); } }; }),
+          quick: this.quick(s).slice(0, 10).map((p) => ({ name: p.name, price: this.money(p.price, false), photo: this.pimg(p), hasPhoto: this.photos, inCart: !!inC[p.id], qty: String(inC[p.id] || 0), add: () => this.add(p) })) }; })(),
       cfgBranch: s.cfg.branch, cfgKasa: s.cfg.kasa, vatNote: 'KDV dahil · %' + s.cfg.vat, sh: SH,
       openExport: () => this.setState({ exp: { kind: s.page === 'cari' ? 'cari' : s.page === 'kasa' ? 'kasa' : s.page === 'servis' ? 'isemirleri' : s.page === 'ana' ? 'satislar' : 'urunler', fmt: s.cfg.fmt || 'xlsx' } }),
       newProduct: () => this.openProduct(null),
@@ -2724,7 +3230,7 @@ class Component extends DCLogic {
           seps: [[';', 'Noktalı virgül ( ; ) · Türkçe Excel'], [',', 'Virgül ( , )']].map((x) => ({ label: x[1], cls: 'seg2' + (c.sep === x[0] ? ' on' : ''), pick: () => this.setCfg({ sep: x[0] }) })),
           fmts: [['xlsx', 'Excel'], ['csv', 'CSV'], ['pdf', 'PDF'], ['json', 'JSON']].map((x) => ({ label: x[1], cls: 'seg2' + (c.fmt === x[0] ? ' on' : ''), pick: () => this.setCfg({ fmt: x[0] }) })),
           themes: [[false, 'Açık'], [true, 'Koyu']].map((x) => ({ label: x[1], cls: 'seg2' + (!!s.dark === x[0] ? ' on' : ''), pick: () => this.setState({ dark: x[0] }) })),
-          sides: [[true, 'Geniş'], [false, 'Dar']].map((x) => ({ label: x[1], cls: 'seg2' + (!!s.sideOpen === x[0] ? ' on' : ''), pick: () => this.setState({ sideOpen: x[0] }) })),
+          sides: [[false, 'Üzerine gelince aç'], [true, 'Hep açık']].map((x) => ({ label: x[1], cls: 'seg2' + (!!s.sideOpen === x[0] ? ' on' : ''), pick: () => { this.setState({ sideOpen: x[0], sideHover: false }); this.setCfg({ sidePinned: x[0] }); } })),
           users: (c.users || []).map((u, i) => ({ name: u.name, initials: u.name.split(' ').map((w) => w[0]).slice(0, 2).join('').toLocaleUpperCase('tr-TR'), roles: ['Yönetici', 'Kasiyer', 'Servis'].map((r) => ({ label: r, cls: 'seg2 sm' + (u.role === r ? ' on' : ''), pick: () => { const us = c.users.slice(); us[i] = Object.assign({}, u, { role: r }); this.setCfg({ users: us }); } })), canRm: i > 0, rm: () => { const us = c.users.slice(); us.splice(i, 1); this.setCfg({ users: us }); } })),
           newUser: s.newUser, setNewUser: (e) => this.setState({ newUser: e.target.value }),
           addUser: () => { const n = String(s.newUser || '').trim(); if (!n) return; this.setCfg({ users: (c.users || []).concat([{ name: n, role: 'Kasiyer' }]) }); this.setState({ newUser: '' }); },
@@ -2755,7 +3261,7 @@ class Component extends DCLogic {
 
       quick: this.quickIds.map((id) => { const p = this.byId[id]; const fl = s.flashId && s.flashId.indexOf(id + '@') === 0; return { label: this.quickNames[id] || p.quick || p.name, price: this.money(p.price, false), aria: 'Sepete ekle: ' + p.name, cls: 'quick' + (fl ? ' flash' : ''), add: () => this.add(p) }; }),
 
-      isAna: s.page === 'ana', isSatis: s.page === 'satis', isStok: s.page === 'stok', isServis: s.page === 'servis', isCari: s.page === 'cari', isKasa: s.page === 'kasa', isAyarlar: s.page === 'ayarlar', setOn: s.page === 'ayarlar',
+      isAna: s.page === 'ana', isSatis: s.page === 'satis', isStok: s.page === 'stok', isServis: s.page === 'servis', isCari: s.page === 'cari', isKasa: s.page === 'kasa', isAyarlar: s.page === 'ayarlar', isTakvim: s.page === 'takvim', isAsistan: s.page === 'asistan', isSale: s.page === 'satis' || s.page === 'ana', setOn: s.page === 'ayarlar',
       stokCats: [{ id: 'all', label: 'Tüm kategoriler', ids: this.P.map((p) => p.id), icon: '' }].concat(this.CATS).map((c) => ({ label: c.label, count: String(c.ids.length), icon: c.icon || '', hasIcon: !!c.icon, cls: 'scat' + (s.stokCat === c.id ? ' on' : ''), pick: () => this.setState({ stokCat: c.id }) })),
       stokTabs: [['hepsi', 'Tümü'], ['az', 'Az stok'], ['yok', 'Stokta yok']].map((t) => ({ label: t[1] + ' · ' + stokCount(t[0]), cls: 'chip' + (s.stokTab === t[0] ? ' on' : ''), pick: () => this.setState({ stokTab: t[0] }) })),
       stokRows, stokEmpty: stokRows.length === 0, sq: s.sq, onSQ: (e) => this.setState({ sq: e.target.value }),

@@ -4,10 +4,12 @@ Motosiklet yedek parça ve servis dükkanları için POS, stok, servis ve cari y
 
 ## Ekranlar
 
-- **Ana sayfa:** Satış odaklı. Günlük ciro ve hedef, saat saat satış, ödeme dağılımı, en çok satanlar, son fişler, ödemesi bekleyen servis, veresiye, azalan ürünler.
+- **Ana sayfa:** Satış odaklı; buradan doğrudan satış yapılır (arama, hızlı ürünler, fiş, F9 ödeme). Günlük ciro ve hedef, saat saat satış, ödeme dağılımı, en çok satanlar, son fişler, ödemesi bekleyen servis, veresiye, azalan ürünler.
 - **Hızlı satış:** Arama öncelikli satış ekranı. Fotoğraflı kategoriler, hızlı erişim (sabitlenen ürünler ve çok satanlar), fiş, ödeme (F9, 1–4).
 - **Ürünler & Stok:** Ürün listesi, ürün detayı, varyasyon yönetimi, hızlı erişime sabitleme, yeni ürün.
 - **Servis, Cari, Kasa & Rapor:** İş emirleri, müşteri ve tedarikçi bakiyeleri, kasa özeti.
+- **Asistan:** Dükkan verilerini bilen sohbet asistanı; satış özeti, stok önerisi, fişe ürün ekleme, takvime görev yazma.
+- **Takvim:** Görev, servis randevusu, teslimat ve ödeme takvimi; ay, hafta, gün ve liste görünümleri, sürükle-bırak.
 - **Ayarlar:** İşletme bilgileri, KDV, kritik stok eşiği, günlük hedef, tema, kullanıcılar, dışa aktarma tercihleri, görsel lisansları.
 - **Dışa aktarma:** Ürünler, satışlar, kasa, cari ve iş emirleri; Excel (.xlsx), CSV, PDF, JSON.
 
