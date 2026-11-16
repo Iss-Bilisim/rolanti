@@ -675,6 +675,31 @@ label.tbtn{position:relative;cursor:pointer}
 /* ---- ana sayfa satış paneli ---- */
 .homepg{flex:999 1 560px;min-width:0;height:100%;container-type:inline-size}
 .shsell{grid-column:1/-1;gap:12px}
+.hcard.shacts{grid-column:1/-1}
+.hacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.hact{display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 12px 8px 10px;border:0;border-radius:12px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);text-align:left}
+.hact:hover{box-shadow:inset 0 0 0 1px var(--line-2);background:var(--sunk)}
+.hacti{width:44px;height:44px;flex:none;border-radius:10px;background:var(--sunk);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.hacti .ic{width:22px;height:22px}
+.hactt{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.hactt b{font-size:15px;font-weight:600;color:var(--ink)}
+.hactt span{font-size:12.5px;color:var(--ink-2)}
+.rl .hact,.rl .hact *{cursor:pointer !important}
+.scw{width:600px}
+.scv{position:relative;margin:0 22px;border-radius:14px;overflow:hidden;background:#111;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.scv video{width:100%;height:100%;object-fit:cover}
+.scv .scl{position:absolute;left:12%;right:12%;top:50%;height:2px;background:rgba(255,255,255,.85);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.scv .scm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;color:#fff;font-size:14px;line-height:1.5;background:rgba(17,17,20,.72)}
+.scin{margin:0 22px}
+.rl .search.scin:focus-within{box-shadow:inset 0 0 0 1px var(--ink-3)}
+.scrows{margin:0 22px;display:flex;flex-direction:column;max-height:220px;overflow:auto}
+.scrow{display:flex;align-items:center;gap:10px;min-height:52px;border-top:1px solid var(--line)}
+.scrow:first-child{border-top:0}
+.scrow .hmain{flex:1;min-width:0}
+.scqty{display:flex;align-items:center;gap:2px}
+.scqty button{width:34px;height:34px;border:0;border-radius:9px;background:var(--sunk);color:var(--ink);font-size:17px}
+.scqty b{min-width:30px;text-align:center;font-size:15px}
+.scunk{margin:0 22px;font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .hcard.shstrip{grid-column:1/-1;display:flex;flex-direction:row;gap:0;padding:14px 20px}
 .shstrip>div{flex:1;display:flex;flex-direction:column;gap:2px;padding-left:20px;border-left:1px solid var(--line)}
 .shstrip>div:first-child{padding-left:0;border-left:0}
@@ -702,6 +727,7 @@ label.tbtn{position:relative;cursor:pointer}
 .hev::before{content:"";width:4px;align-self:stretch;margin:8px 0;border-radius:4px;background:var(--ec)}
 .hev:hover{background:var(--sunk)}
 .hevt{font-size:13px;color:var(--ink-2);width:44px}
+@container (max-width:900px){.hacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @container (max-width:1100px){.shg{grid-template-columns:repeat(2,minmax(0,1fr))}.shhero,.shwide{grid-column:1/-1}.hsquick{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @container (max-width:760px){.shg{grid-template-columns:1fr}.hsquick{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* ---- takvim ---- */
@@ -1429,7 +1455,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
           <h1 id="h-ana" style="margin-right: 0">{{h.greet}}</h1>
           <span class="sub" style="margin-right: auto">{{h.date}}</span>
           <button class="tbtn" onClick="{{openExport}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"></path></svg>Dışa aktar</button>
-          <button class="tbtn" onClick="{{h.goSale}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1.1 11.1a1.6 1.6 0 0 1-1.6 1.4H8.2a1.6 1.6 0 0 1-1.6-1.4zM9 8.5V7a3 3 0 0 1 6 0v1.5M12.9 11.3l-2.7 3.9h3.6l-2.6 3.6"></path></svg>Tam ekran satış</button>
+          <button class="tbtn" onClick="{{h.goSale}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 8.5h11l-.9 10.6a1.5 1.5 0 0 1-1.5 1.4h-6.2a1.5 1.5 0 0 1-1.5-1.4zM12.5 8.5V7a3 3 0 0 1 6 0v1.5M2.5 11.5h4.5M1.5 15h5.5M3.5 18.5H7"></path></svg>Tam ekran satış</button>
         </div>
         <div class="shg">
         <div class="hcard shsell">
@@ -1450,6 +1476,12 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
                 <sc-for list="{{hs.quick}}" as="t" hint-placeholder-count="10"><button class="hsq" onClick="{{t.add}}"><span class="hsqi"><sc-if value="{{t.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{t.photo}}" alt=""></sc-if><sc-if value="{{t.inCart}}" hint-placeholder-val="{{false}}"><span class="tq">{{t.qty}}</span></sc-if></span><span class="hsqn">{{t.name}}</span><b class="mono">{{t.price}}</b></button></sc-for>
               </div>
             </sc-if>
+          </div>
+          <div class="hcard shacts">
+            <div class="hhead"><h2>Sık işlemler</h2></div>
+            <div class="hacts">
+              <sc-for list="{{h.acts}}" as="a" hint-placeholder-count="8"><button class="hact" onClick="{{a.run}}"><span class="hacti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{a.icon}}"></path></svg></span><span class="hactt"><b>{{a.label}}</b><span>{{a.hint}}</span></span></button></sc-for>
+            </div>
           </div>
           <div class="hcard shstrip">
             <div><span>Bugünkü satış</span><b class="mono">{{sh.total}}</b></div>
@@ -1714,6 +1746,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
         <h1 id="h-stok">Ürünler &amp; Stok</h1>
         <sc-for list="{{stokTabs}}" as="t" hint-placeholder-count="3"><button class="{{t.cls}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
         <button class="tbtn" onClick="{{openExport}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"></path></svg>Dışa aktar</button>
+        <button class="tbtn" onClick="{{scanStock}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8V5.5a1 1 0 0 1 1-1H7M20.5 8V5.5a1 1 0 0 0-1-1H17M3.5 16v2.5a1 1 0 0 0 1 1H7M20.5 16v2.5a1 1 0 0 1-1 1H17M8 8.5v7M11 8.5v7M13.5 8.5v7M16 8.5v7"></path></svg>Barkodla stok girişi</button>
         <button class="tbtn pri" onClick="{{newProduct}}" style="height: 44px"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yeni ürün</button>
       </div>
       <div class="search" style="height: 52px; margin-bottom: 12px">
@@ -2118,6 +2151,20 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       <div class="pdf"><sc-if value="{{ed.notNew}}" hint-placeholder-val="{{false}}"><button class="{{ed.delCls}}" onClick="{{ed.del}}" style="height: 46px">{{ed.delLabel}}</button></sc-if><button class="tbtn plain" onClick="{{ed.close}}" style="height: 46px; margin-left: auto">Vazgeç</button><button class="tbtn pri" onClick="{{ed.save}}" style="height: 46px; min-width: 120px">Kaydet</button></div>
     </div>
   </sc-if>
+  <sc-if value="{{scOn}}" hint-placeholder-val="{{false}}">
+    <div class="pdscrim" onClick="{{sc.close}}"></div>
+    <div class="exw scw" role="dialog" aria-modal="true" aria-labelledby="sc-h">
+      <div class="pdh" style="padding-bottom: 6px"><h2 id="sc-h" class="pdt1" style="flex: 1">{{sc.title}}</h2><button class="iconbtn" onClick="{{sc.close}}" aria-label="Kapat"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+      <div class="scv"><video ref="{{sc.videoRef}}"></video><sc-if value="{{sc.live}}" hint-placeholder-val="{{false}}"><span class="scl"></span></sc-if><sc-if value="{{sc.hasMsg}}" hint-placeholder-val="{{false}}"><div class="scm">{{sc.msg}}</div></sc-if></div>
+      <div class="search scin" style="height: 48px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8V5.5a1 1 0 0 1 1-1H7M20.5 8V5.5a1 1 0 0 0-1-1H17M3.5 16v2.5a1 1 0 0 0 1 1H7M20.5 16v2.5a1 1 0 0 1-1 1H17M8 8.5v7M11 8.5v7M13.5 8.5v7M16 8.5v7"></path></svg><input ref="{{sc.inRef}}" onKeyDown="{{sc.key}}" placeholder="Barkodu yazın ya da tarayıcıyla okutun · Enter" autoComplete="off" spellCheck="false" aria-label="Barkod"></div>
+      <sc-if value="{{sc.hasUnk}}" hint-placeholder-val="{{false}}"><div class="scunk"><span>Tanımsız barkod: <b class="mono">{{sc.unk}}</b></span><button class="tbtn" onClick="{{sc.newProd}}" style="height: 36px">Yeni ürün olarak ekle</button></div></sc-if>
+      <div class="scrows">
+        <sc-for list="{{sc.rows}}" as="r" hint-placeholder-count="3"><div class="scrow"><span class="hmain"><b>{{r.name}}</b><span>{{r.sku}} · {{r.note}}</span></span><span class="scqty"><button onClick="{{r.dec}}" aria-label="Azalt">−</button><b class="mono">{{r.qty}}</b><button onClick="{{r.inc}}" aria-label="Artır">+</button></span><button class="iconbtn" onClick="{{r.rm}}" aria-label="Listeden çıkar"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div></sc-for>
+        <sc-if value="{{sc.empty}}" hint-placeholder-val="{{true}}"><div class="hempty">Henüz ürün okutulmadı.</div></sc-if>
+      </div>
+      <div class="pdf"><button class="tbtn plain" onClick="{{sc.close}}" style="height: 46px; margin-left: auto">Vazgeç</button><button class="tbtn pri" onClick="{{sc.go}}" style="height: 46px; min-width: 160px">{{sc.goLabel}}</button></div>
+    </div>
+  </sc-if>
   <sc-if value="{{expOn}}" hint-placeholder-val="{{false}}">
     <div class="pdscrim" onClick="{{ex.close}}"></div>
     <div class="exw" role="dialog" aria-modal="true" aria-labelledby="ex-h">
@@ -2382,7 +2429,7 @@ class Component extends DCLogic {
       if (!seen) this._ts = setTimeout(() => this.startTour(), 650);
     }
   }
-  componentWillUnmount() { if (this._kd) document.removeEventListener('keydown', this._kd); clearTimeout(this._ts); this.tourHooks(false); clearTimeout(this._t1); clearTimeout(this._t2); clearTimeout(this._t3); cancelAnimationFrame(this._raf); }
+  componentWillUnmount() { this.stopCam && this.stopCam(); if (this._kd) document.removeEventListener('keydown', this._kd); clearTimeout(this._ts); this.tourHooks(false); clearTimeout(this._t1); clearTimeout(this._t2); clearTimeout(this._t3); cancelAnimationFrame(this._raf); }
 
   animateTotal(from, to) {
     const reduce = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2933,6 +2980,47 @@ class Component extends DCLogic {
     this.setState({ cart, bumpKey: key + '@' + Date.now(), newKey: null, sel: cart.find((l) => l.key === key) ? key : (cart.length ? cart[cart.length - 1].key : null) });
   }
   remove(key) { const cart = this.state.cart.filter((l) => l.key !== key); this.setState({ cart, sel: cart.length ? cart[cart.length - 1].key : null, newKey: null }); }
+  scanBeep() { try { navigator.vibrate && navigator.vibrate(40); const A = window.AudioContext || window.webkitAudioContext; if (!A) return; this._ac = this._ac || new A(); const o = this._ac.createOscillator(); const g = this._ac.createGain(); o.frequency.value = 1100; g.gain.value = 0.08; o.connect(g); g.connect(this._ac.destination); o.start(); o.stop(this._ac.currentTime + 0.08); } catch (er) {} }
+  openScan(mode) { this._lastCode = ''; this.setState({ scan: { mode, list: [], unk: [], cam: 'starting', msg: 'Kamera açılıyor…' } }, () => { this.startCam(); setTimeout(() => this.scanInEl && this.scanInEl.focus(), 60); }); }
+  async startCam() {
+    const set = (cam, msg) => this.state.scan && this.setState({ scan: Object.assign({}, this.state.scan, { cam, msg }) });
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { set('err', 'Bu pencerede kamera kullanılamıyor. Barkodu aşağıya yazabilir ya da el tarayıcısıyla okutabilirsiniz.'); return; }
+      const st = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
+      if (!this.state.scan) { st.getTracks().forEach((x) => x.stop()); return; }
+      this._stream = st; const v = this.scanVideo; if (!v) return;
+      v.muted = true; v.setAttribute('playsinline', ''); v.srcObject = st; try { await v.play(); } catch (er) {}
+      if (!('BarcodeDetector' in window)) { set('nodet', 'Bu tarayıcı kameradan barkod okuyamıyor (Android\u2019de Chrome kullanın). Barkodu aşağıya yazabilir ya da el tarayıcısıyla okutabilirsiniz.'); return; }
+      let det; try { det = new window.BarcodeDetector({ formats: ['ean_13', 'ean_8', 'upc_a', 'upc_e', 'code_128', 'code_39', 'itf'] }); } catch (er) { det = new window.BarcodeDetector(); }
+      set('on', '');
+      this._scT = setInterval(async () => {
+        if (this._scBusy || !this.scanVideo || this.scanVideo.readyState < 2) return; this._scBusy = true;
+        try { const r = await det.detect(this.scanVideo); if (r && r[0] && r[0].rawValue) this.scanCode(r[0].rawValue); } catch (er) {}
+        this._scBusy = false;
+      }, 200);
+    } catch (er) {
+      const n = er && er.name; set('err', n === 'NotAllowedError' || n === 'SecurityError' ? 'Kamera izni verilmedi ya da bu pencerede kapalı. Sayfayı yeni sekmede açıp izin verin; şimdilik barkodu yazabilirsiniz.' : n === 'NotFoundError' ? 'Kamera bulunamadı. Barkodu yazabilir ya da el tarayıcısıyla okutabilirsiniz.' : 'Kamera açılamadı. Barkodu yazabilirsiniz.');
+    }
+  }
+  stopCam() { clearInterval(this._scT); this._scBusy = false; try { this._stream && this._stream.getTracks().forEach((x) => x.stop()); } catch (er) {} this._stream = null; }
+  scanClose() { this.stopCam(); this.setState({ scan: null }); }
+  scanCode(raw) {
+    const sc = this.state.scan; if (!sc) return; const code = String(raw || '').trim(); if (!code) return;
+    const now = Date.now(); if (code === this._lastCode && now - this._lastT < 1500) return; this._lastCode = code; this._lastT = now;
+    const z = (x) => String(x || '').replace(/^0+/, '').toLowerCase(); const c = z(code);
+    const p = this.P.find((x) => z(x.bc) === c || z(x.sku) === c);
+    this.scanBeep();
+    if (!p) { if (sc.unk.indexOf(code) < 0) this.setState({ scan: Object.assign({}, sc, { unk: sc.unk.concat([code]) }) }); return; }
+    const list = sc.list.slice(); const i = list.findIndex((x) => x.pid === p.id);
+    if (i >= 0) list[i] = { pid: p.id, qty: list[i].qty + 1 }; else list.unshift({ pid: p.id, qty: 1 });
+    this.setState({ scan: Object.assign({}, sc, { list }) });
+  }
+  scanQty(i, d) { const sc = this.state.scan; const list = sc.list.slice(); const q = list[i].qty + d; if (q < 1) list.splice(i, 1); else list[i] = { pid: list[i].pid, qty: q }; this.setState({ scan: Object.assign({}, sc, { list }) }); }
+  scanCommit() {
+    const sc = this.state.scan; if (!sc || !sc.list.length) return; const n = sc.list.reduce((a, x) => a + x.qty, 0);
+    if (sc.mode === 'stok') { sc.list.forEach((x) => { const p = this.byId[x.pid]; if (p) p.stock = (p.stock || 0) + x.qty; }); this.saveProducts(); this.scanClose(); this.flashToast(n + ' adet stoğa işlendi.'); this.forceUpdate(); }
+    else { this.scanClose(); if (this.state.page !== 'ana' && this.state.page !== 'satis') this.go('ana'); sc.list.forEach((x) => { const p = this.byId[x.pid]; for (let k = 0; k < x.qty; k++) if (p) this.add(p); }); }
+  }
   flashToast(t) { clearTimeout(this._t2); this.setState({ toast: t }); this._t2 = setTimeout(() => this.setState({ toast: null }), 3200); }
 
   openPay() { const s = this.state; if (!s.cart.length || s.paid) { if (!s.cart.length) this.flashToast('Fiş boş. Önce ürün ekle.'); return; } this.setState({ payStep: 'choose', discOpen: false }); }
@@ -2983,8 +3071,8 @@ class Component extends DCLogic {
       if (k === 'Enter') { e.preventDefault(); const c = cmds[s.cmdAct]; if (c) c.run(); return; }
       return;
     }
-    if (k === 'Escape' && (s.pd || s.exp || s.evd)) { e.preventDefault(); this.setState({ pd: null, exp: null, evd: null }); return; }
-    if (s.pd || s.exp || s.evd) return;
+    if (k === 'Escape' && (s.pd || s.exp || s.evd || s.scan)) { e.preventDefault(); if (s.scan) this.scanClose(); else this.setState({ pd: null, exp: null, evd: null }); return; }
+    if (s.pd || s.exp || s.evd || s.scan) return;
     if (s.page === 'ana') {
       if (k === 'F9') { e.preventDefault(); if (!s.payStep) this.openPay(); else if (s.payStep === 'choose') this.choose('Nakit'); else this.completeCash(); return; }
       const mapA = { F10: 'Kart', F11: 'Havale', F12: 'Veresiye' }; if (mapA[k]) { e.preventDefault(); this.choose(mapA[k]); return; }
@@ -3144,6 +3232,7 @@ class Component extends DCLogic {
     const openCari = (c, tab) => { this.go('cari'); this.setState({ cp: c.id, caTab: tab, caQ: '', tahOpen: true, tah: '' }); setTimeout(() => this.tahEl && this.tahEl.focus(), 60); };
     return {
       greet: (hr < 12 ? 'Günaydın' : hr < 18 ? 'İyi günler' : 'İyi akşamlar') + ', ' + String(s.cfg.owner || 'Emre').split(' ')[0], date: now.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' + s.cfg.branch,
+      acts: [ { label: 'Hızlı satış', hint: 'Tam ekran', icon: 'M9.5 8.5h11l-.9 10.6a1.5 1.5 0 0 1-1.5 1.4h-6.2a1.5 1.5 0 0 1-1.5-1.4zM12.5 8.5V7a3 3 0 0 1 6 0v1.5M2.5 11.5h4.5M1.5 15h5.5M3.5 18.5H7', run: () => this.go('satis') }, { label: 'Barkodla sat', hint: 'Kamera ya da tarayıcı', icon: 'M3.5 8V5.5a1 1 0 0 1 1-1H7M20.5 8V5.5a1 1 0 0 0-1-1H17M3.5 16v2.5a1 1 0 0 0 1 1H7M20.5 16v2.5a1 1 0 0 1-1 1H17M8 8.5v7M11 8.5v7M13.5 8.5v7M16 8.5v7', run: () => this.openScan('sat') }, { label: 'Stok girişi', hint: 'Barkodla toplu', icon: 'M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4 8-4M12 12v8', run: () => this.openScan('stok') }, { label: 'Yeni ürün', hint: 'Ürün kartı aç', icon: 'M12 5v14M5 12h14', run: () => this.openProduct(null) }, { label: 'İş emri aç', hint: 'Servis kaydı', icon: 'M14.5 5.5a4 4 0 0 0-5.2 5.2L4 16l4 4 5.3-5.3a4 4 0 0 0 5.2-5.2l-2.6 2.6-2.4-.6-.6-2.4z', run: () => { this.go('servis'); this.newOrder(); } }, { label: 'Tahsilat', hint: 'Cari hesaplar', icon: 'M3.5 7.5h17v10h-17zM3.5 11h17M7 15h3', run: () => this.go('cari') }, { label: 'Kasa özeti', hint: 'Günlük rapor', icon: 'M5 19V11M12 19V5M19 19v-9', run: () => this.go('kasa') }, { label: 'Randevu ekle', hint: 'Takvime yaz', icon: 'M5 5.5h14v14H5zM5 9.5h14M9 3.5v4M15 3.5v4', run: () => this.openEvent(null) } ],
       goSale: () => this.go('satis'), goKasa: () => this.go('kasa'), goServis: () => this.go('servis'),
       total: this.money(salesSum, false), count: String(s.sales.length), avg: this.money(s.sales.length ? salesSum / s.sales.length : 0, false),
       spark: pts.join(' '), sparkFill: '0,120 ' + pts.join(' ') + ' 700,120', days,
@@ -3259,7 +3348,7 @@ class Component extends DCLogic {
     const ICON = {
       asistan: 'M12 3.5l1.8 4.9 4.9 1.8-4.9 1.8L12 16.9l-1.8-4.9-4.9-1.8 4.9-1.8zM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z',
       takvim: 'M4.5 6.5h15v13h-15zM4.5 10.5h15M8.5 4v4M15.5 4v4M8 14h2M11 14h2M14 14h2M8 17h2M11 17h2',
-      satis: 'M5.5 8.5h13l-1.1 11.1a1.6 1.6 0 0 1-1.6 1.4H8.2a1.6 1.6 0 0 1-1.6-1.4zM9 8.5V7a3 3 0 0 1 6 0v1.5M12.9 11.3l-2.7 3.9h3.6l-2.6 3.6',
+      satis: 'M9.5 8.5h11l-.9 10.6a1.5 1.5 0 0 1-1.5 1.4h-6.2a1.5 1.5 0 0 1-1.5-1.4zM12.5 8.5V7a3 3 0 0 1 6 0v1.5M2.5 11.5h4.5M1.5 15h5.5M3.5 18.5H7',
       stok: 'M3.5 7.5L12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5L12 11.5l8.5-4M12 11.5v9',
       servis: 'M14.5 6.5a4 4 0 0 0-5.2 5.2L4 17l3 3 5.3-5.3a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.6-.4-.4-2.6z',
       cari: 'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2.5 20a6.5 6.5 0 0 1 13 0M16 4.3a3.5 3.5 0 0 1 0 6.4M18 14a6.5 6.5 0 0 1 3.5 6',
@@ -3443,6 +3532,16 @@ class Component extends DCLogic {
           quick: this.quick(s).slice(0, 10).map((p) => ({ name: p.name, price: this.money(p.price, false), photo: this.pimg(p), hasPhoto: this.photos, inCart: !!inC[p.id], qty: String(inC[p.id] || 0), add: () => this.add(p) })) }; })(),
       cfgBranch: s.cfg.branch, cfgKasa: s.cfg.kasa, vatNote: 'KDV dahil · %' + s.cfg.vat, sh: SH,
       openExport: () => this.setState({ exp: { kind: s.page === 'cari' ? 'cari' : s.page === 'kasa' ? 'kasa' : s.page === 'servis' ? 'isemirleri' : s.page === 'ana' ? 'satislar' : 'urunler', fmt: s.cfg.fmt || 'xlsx' } }),
+      scanStock: () => this.openScan('stok'),
+      scOn: !!s.scan,
+      sc: (() => { const sc = s.scan; if (!sc) return { rows: [], videoRef: () => {}, inRef: () => {} }; const stokM = sc.mode === 'stok';
+        const rows = sc.list.map((x, i) => { const p = this.byId[x.pid]; return { name: p.name, sku: p.sku, note: stokM ? 'Şu an ' + p.stock + ' → ' + ((p.stock || 0) + x.qty) + ' adet' : this.money(p.price) , qty: String(x.qty), inc: () => this.scanQty(i, 1), dec: () => this.scanQty(i, -1), rm: () => this.scanQty(i, -x.qty) }; });
+        const n = sc.list.reduce((a, x) => a + x.qty, 0);
+        return { title: stokM ? 'Barkodla stok girişi' : 'Barkodla satış', videoRef: (el) => { this.scanVideo = el; }, inRef: (el) => { this.scanInEl = el; },
+          live: sc.cam === 'on', hasMsg: sc.cam !== 'on', msg: sc.msg, rows, empty: !rows.length, hasUnk: sc.unk.length > 0, unk: sc.unk.join(', '),
+          newProd: () => { const bc = sc.unk[0]; this.scanClose(); this.openProduct(null); setTimeout(() => this.pdSet({ bc }), 30); },
+          key: (e) => { if (e.key === 'Enter') { e.preventDefault(); const v = e.target.value; e.target.value = ''; this.scanCode(v); } },
+          goLabel: rows.length ? (stokM ? n + ' adedi stoğa işle' : n + ' adedi fişe ekle') : (stokM ? 'Stoğa işle' : 'Fişe ekle'), go: () => this.scanCommit(), close: () => this.scanClose() }; })(),
       newProduct: () => this.openProduct(null),
       expOn: !!s.exp,
       ex: (() => { if (!s.exp) return {}; const K = [['urunler', 'Ürünler ve stok', 'Varyantlar dahil'], ['satislar', 'Satışlar', 'Bugünkü fişler'], ['kasa', 'Kasa özeti', 'Ödeme yöntemine göre'], ['cari', 'Cari hesaplar', 'Müşteri ve tedarikçi bakiyeleri'], ['isemirleri', 'İş emirleri', 'Servis kayıtları']];
