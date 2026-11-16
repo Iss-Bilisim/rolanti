@@ -1,0 +1,12 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.setViewport({width:1600,height:900});await pg.goto('http://localhost:8765/dist/page.html?notour#satis');await new Promise(r=>setTimeout(r,1300));
+console.log('credit btn',await pg.$('.credit'));
+await pg.type('#ara','lastik');await new Promise(r=>setTimeout(r,400));
+await pg.hover('.pcard');await pg.click('.pcard .ppin');await new Promise(r=>setTimeout(r,500));
+const cart=await pg.$eval('.receipt',e=>e.innerText.match(/Toplam\s*₺[\d.,]+/)[0]);
+await pg.screenshot({path:'out/pp.png',clip:{x:240,y:60,width:760,height:360}});
+await pg.click('#ara',{clickCount:3});await pg.keyboard.press('Backspace');await new Promise(r=>setTimeout(r,400));
+const first=await pg.$$eval('.ttile .tname',x=>x.map(e=>e.textContent).slice(0,5));
+console.log({cart,first,errs});await b.close();

@@ -1,0 +1,17 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.setViewport({width:1920,height:1000});await pg.goto('http://localhost:8765/dist/page.html?notour&notour#satis');await new Promise(r=>setTimeout(r,1300));
+const names=async()=>pg.$$eval('.ttile .tname',x=>x.map(e=>e.textContent).slice(0,5));
+const a0=await names();
+await pg.hover('.ttile:nth-child(5)');await new Promise(r=>setTimeout(r,250));await pg.screenshot({path:'out/q1.png',clip:{x:240,y:420,width:1280,height:260}});
+const before=await pg.$eval('.rfoot',e=>e.textContent.length);
+await pg.click('.ttile:nth-child(5) .tpin');await new Promise(r=>setTimeout(r,250));const a1=await names();
+const cartLines1=await pg.$$eval('.receipt .rline, .receipt li',x=>x.length);
+await pg.click('.qedit');await new Promise(r=>setTimeout(r,250));
+await pg.click('.ttile:nth-child(2) .tmv.r');await new Promise(r=>setTimeout(r,250));const a2=await names();
+await pg.screenshot({path:'out/q2.png',clip:{x:240,y:420,width:1280,height:260}});
+await pg.click('.ttile:nth-child(1)');await new Promise(r=>setTimeout(r,250));const a3=await names();
+await pg.click('.qedit');await new Promise(r=>setTimeout(r,200));
+await pg.reload();await new Promise(r=>setTimeout(r,1300));const a4=await names();
+console.log({a0,a1,a2,a3,a4,errs});await b.close();

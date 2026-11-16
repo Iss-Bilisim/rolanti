@@ -1,0 +1,10 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();await pg.setViewport({width:1440,height:900});
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.goto('http://localhost:8765/dist/page.html?notour');await new Promise(r=>setTimeout(r,1200));
+await pg.mouse.click(345,560); await new Promise(r=>setTimeout(r,260)); await pg.screenshot({path:'out/f1.png'});
+await new Promise(r=>setTimeout(r,700)); await pg.screenshot({path:'out/f2.png'});
+await pg.mouse.click(540,560); await new Promise(r=>setTimeout(r,900)); await pg.mouse.click(345,560); await new Promise(r=>setTimeout(r,900));
+await pg.screenshot({path:'out/f3.png'});
+console.log(errs);await b.close();

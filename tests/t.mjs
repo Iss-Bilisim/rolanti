@@ -1,0 +1,13 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();await pg.setViewport({width:1440,height:900});
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await pg.goto('http://localhost:8765/view.html?f=p/Bos.dc.html');await pg.waitForFunction(()=>document.title==='ready');
+await pg.focus('#ara');await pg.keyboard.type('elcik');await pg.keyboard.press('Enter');await pg.keyboard.press('Escape');
+await pg.keyboard.type('karbu');await pg.keyboard.press('Enter');await new Promise(r=>setTimeout(r,400));
+await pg.screenshot({path:'out/t1.png'});
+await pg.keyboard.press('Escape');await pg.keyboard.press('Escape');
+await pg.keyboard.type('+');await pg.keyboard.press('F10');await new Promise(r=>setTimeout(r,300));await pg.screenshot({path:'out/t2.png'});
+await new Promise(r=>setTimeout(r,1400));await pg.screenshot({path:'out/t3.png'});
+await pg.keyboard.down('Control');await pg.keyboard.press('k');await pg.keyboard.up('Control');await new Promise(r=>setTimeout(r,300));await pg.screenshot({path:'out/t4.png'});
+console.log(JSON.stringify(errs.filter(e=>!/Warning/.test(e)).slice(0,5)));await b.close();

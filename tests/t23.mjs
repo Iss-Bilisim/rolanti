@@ -1,0 +1,12 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.setViewport({width:1600,height:900});await pg.goto('http://localhost:8765/dist/page.html?notour#satis');await new Promise(r=>setTimeout(r,1300));
+const tot=()=>pg.$eval('.receipt',e=>e.innerText.match(/Toplam\s*₺[\d.,]+/)[0].replace(/\s+/g,' '));
+console.log('start',await tot());
+await pg.type('#ara','lastik');await new Promise(r=>setTimeout(r,500));console.log('after type',await tot());
+await pg.hover('.pcard');await new Promise(r=>setTimeout(r,200));
+const bb=await pg.$eval('.pcard .ppin',e=>{const r=e.getBoundingClientRect();return [r.x,r.y,r.width,r.height,getComputedStyle(e).opacity]});console.log(bb);
+await pg.click('.pcard .ppin');await new Promise(r=>setTimeout(r,500));console.log('after pin',await tot());
+console.log(await pg.$$eval('.pcard .ppin',x=>x.map(e=>e.className)));
+await b.close();

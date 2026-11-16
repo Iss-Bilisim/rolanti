@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css">
+<script src="react.development.js"></script><script src="react-dom.development.js"></script>
+<style>html,body{margin:0}</style></head><body><div id="root"></div>
+<script>
+const P=new URLSearchParams(location.search);
+const MAP={class:'className',for:'htmlFor',onclick:'onClick',onkeydown:'onKeyDown',onchange:'onChange',onfocus:'onFocus',onblur:'onBlur',onmouseenter:'onMouseEnter',autocomplete:'autoComplete',spellcheck:'spellCheck',crossorigin:'crossOrigin',tabindex:'tabIndex','aria-hidden':'aria-hidden'};
+function get(scope,path){path=path.trim();if(path==='true')return true;if(path==='false')return false;if(/^-?\d+(\.\d+)?$/.test(path))return +path;let v=scope;for(const k of path.split('.')){if(v==null)return undefined;v=v[k]}return v}
+function interp(str,scope){const m=str.match(/^\s*\{\{([^}]+)\}\}\s*$/);if(m)return get(scope,m[1]);return str.replace(/\{\{([^}]+)\}\}/g,(_,p)=>{const v=get(scope,p);return v==null?'':String(v)})}
+function css(s){const o={};String(s||'').split(';').forEach(d=>{const i=d.indexOf(':');if(i<0)return;let k=d.slice(0,i).trim(),v=d.slice(i+1).trim();if(!k)return;if(!k.startsWith('--'))k=k.replace(/-([a-z])/g,(_,c)=>c.toUpperCase());o[k]=v});return o}
+const NID=new WeakMap();let nidc=0;const idOf=n=>{if(!NID.has(n))NID.set(n,++nidc);return NID.get(n);};
+function conv(node,scope){
+ if(node.nodeType===3){const t=node.textContent;if(!t.includes('{{'))return t;return interp(t,scope)}
+ if(node.nodeType!==1)return null;
+ const tag=node.tagName.toLowerCase();
+ if(tag==='helmet')return null;
+ const kids=()=>Array.from(node.childNodes).map(n=>conv(n,scope));
+ if(tag==='sc-if'){return get(scope,node.getAttribute('value').replace(/[{}]/g,''))?React.createElement(React.Fragment,{key:'n'+idOf(node)},...Array.from(node.childNodes).map(n=>conv(n,scope))):null}
+ if(tag==='sc-for'){const list=get(scope,node.getAttribute('list').replace(/[{}]/g,''))||[];const as=node.getAttribute('as');return list.map((it,i)=>React.createElement(React.Fragment,{key:i},...Array.from(node.childNodes).map(n=>conv(n,Object.assign({},scope,{[as]:it,$index:i})))))}
+ const props={};
+ for(const a of node.attributes){if(a.name.startsWith('hint-'))continue;let n=MAP[a.name]||a.name;let v=a.value.includes('{{')?interp(a.value,scope):a.value;if(n==='style')v=typeof v==='string'?css(v):v;if(n==='disabled'&&typeof v==='string')v=v!=='false';if(typeof v==='boolean'&&n.startsWith('aria'))v=String(v);if(n==='viewbox')n='viewBox';props[n]=v}
+ const ch=Array.from(node.childNodes).map(n=>conv(n,scope));
+ return React.createElement(tag,props,...(['input','img','br'].includes(tag)?[]:ch));
+}
+(async()=>{
+ const src=await (await fetch(P.get('f'))).text();
+ const doc=new DOMParser().parseFromString(src,'text/html');
+ const helmet=doc.querySelector('helmet');helmet.querySelectorAll('style').forEach(s=>document.head.appendChild(s.cloneNode(true)));
+ const sc=doc.querySelector('script[data-dc-script]').textContent;
+ class DCLogic extends React.Component{render(){const v=this.renderVals();return React.createElement(React.Fragment,null,...Array.from(xdc.childNodes).map(n=>conv(n,v)))}}
+ const xdc=doc.querySelector('x-dc');
+ const Component=new Function('DCLogic',sc+';return Component')(DCLogic);
+ const props={};if(P.get('dark'))props.dark=P.get('dark')==='1';
+ ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Component,props));
+ await document.fonts.ready;setTimeout(()=>document.title='ready',600);
+})().catch(e=>{document.body.innerText='ERR '+e.stack});
+</script></body></html>

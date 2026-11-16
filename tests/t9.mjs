@@ -1,0 +1,13 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();await pg.setViewport({width:1440,height:900});
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.goto('http://localhost:8765/dist/page.html?notour');await new Promise(r=>setTimeout(r,1300));
+await pg.screenshot({path:'out/b1.png'});
+await pg.keyboard.press('F9');await new Promise(r=>setTimeout(r,250));await pg.screenshot({path:'out/b2.png'});
+await pg.keyboard.press('Escape');
+const nav=async i=>{const btns=await pg.$$('nav[aria-label="Ana menü"] button');await btns[i].click();await new Promise(r=>setTimeout(r,300));};
+await nav(2);const rows=await pg.$$('.row2');await rows[0].click();await new Promise(r=>setTimeout(r,250));await pg.screenshot({path:'out/b3.png'});
+await nav(4);await pg.screenshot({path:'out/b4.png'});
+await nav(0);await pg.click('button[aria-label="Koyu tema"]');await new Promise(r=>setTimeout(r,300));await pg.screenshot({path:'out/b5.png'});
+console.log(errs);await b.close();

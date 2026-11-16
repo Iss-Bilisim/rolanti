@@ -1,0 +1,16 @@
+{"v":3,"createdOnFiles":{"v":1,"at":"2026-11-16T08:40:00Z"},"title":"Rölanti · Satış (POS) ekranı","launch":{"view":"canvas"},"pages":[],
+"boards":{
+"Main.dc.html":{"x":0,"y":0,"w":1440,"h":900,"title":"2 · Dolu sepet + seçili müşteri (oynatılabilir)","expand":"fill","is_interactive":true},
+"Bos.dc.html":{"x":1520,"y":0,"w":1440,"h":900,"title":"1 · Boş sepet","expand":"fill","is_interactive":true},
+"SonucYok.dc.html":{"x":3040,"y":0,"w":1440,"h":900,"title":"3 · Arama sonucu yok","expand":"fill","is_interactive":true},
+"StokYok.dc.html":{"x":0,"y":1020,"w":1440,"h":900,"title":"4 · Stokta olmayan ürün uyarısı","expand":"fill","is_interactive":true},
+"Odeme.dc.html":{"x":1520,"y":1020,"w":1440,"h":900,"title":"5 · Ödeme tamamlandı","expand":"fill","is_interactive":true},
+"Koyu.dc.html":{"x":3040,"y":1020,"w":1440,"h":900,"title":"6 · Koyu mod, dolu sepet","expand":"fill","is_interactive":true},
+"Dar1366.dc.html":{"x":0,"y":2040,"w":1366,"h":768,"title":"1366×768 · menü daraltılmış","expand":"fill","is_interactive":true}
+},
+"order":["Main.dc.html","Bos.dc.html","SonucYok.dc.html","StokYok.dc.html","Odeme.dc.html","Koyu.dc.html","Dar1366.dc.html"],
+"notes":{
+"baslik":{"x":0,"y":-300,"text":"Rölanti · Satış ekranı, altı durum","kind":"title1","maxW":4480},
+"nasil":{"x":1446,"y":2040,"text":"Oynat: Main artboard'unda Play'e bas. / ile ara, ↑↓ gez, Enter ekle, + − miktar, F9–F12 öde, Esc temizle, Ctrl K komut paleti, ? kısayollar. Her artboard'un Tweaks sekmesinden durum ve koyu mod değişir.","w":420,"fill":"orange"}
+},
+"designSystems":[]}

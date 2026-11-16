@@ -1,0 +1,11 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();await pg.setViewport({width:1440,height:900});
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.goto('http://localhost:8765/dist/page.html?notour');await new Promise(r=>setTimeout(r,1300));
+await pg.screenshot({path:'out/k1.png'});
+await pg.evaluate(()=>document.querySelector('.cgrid').scrollIntoView());await new Promise(r=>setTimeout(r,200));await pg.screenshot({path:'out/k2.png'});
+const t=await pg.$$('.ctile');await t[0].click();await new Promise(r=>setTimeout(r,300));await pg.screenshot({path:'out/k3.png'});
+const n=await pg.$$eval('.pcard',x=>x.length);
+await pg.keyboard.press('Escape');await new Promise(r=>setTimeout(r,200));const home=await pg.$$eval('.ctile',x=>x.length);
+console.log({n,home,errs});await b.close();

@@ -1,0 +1,10 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.setViewport({width:1600,height:900});await pg.goto('http://localhost:8765/dist/page.html?notour#satis');await new Promise(r=>setTimeout(r,1300));
+await pg.click('.bcat:nth-child(8)');await new Promise(r=>setTimeout(r,500));
+await pg.mouse.move(700,300);await pg.screenshot({path:'out/pc1.png'});
+const t=()=>pg.$eval('.receipt',e=>e.innerText.match(/Toplam\s*₺[\d.,]+/)[0].replace(/\s+/g,' '));
+const t0=await t();await pg.click('.pcard:nth-child(3) .pbtn');await new Promise(r=>setTimeout(r,300));const t1=await t();
+await pg.click('.pcard:nth-child(4) .pimg');await new Promise(r=>setTimeout(r,300));const t2=await t();
+console.log({t0,t1,t2,errs});await b.close();

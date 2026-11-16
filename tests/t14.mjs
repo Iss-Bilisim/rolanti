@@ -1,0 +1,17 @@
+import p from 'puppeteer-core';
+const b=await p.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+const pg=await b.newPage();await pg.setViewport({width:1440,height:900});
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));
+await pg.goto('http://localhost:8765/dist/page.html?notour&notour#ana');await new Promise(r=>setTimeout(r,1300));
+await pg.screenshot({path:'out/a1.png'});
+await pg.keyboard.down('Control');await pg.keyboard.press('k');await pg.keyboard.up('Control');await new Promise(r=>setTimeout(r,200));
+await pg.keyboard.type('34 mtr');await new Promise(r=>setTimeout(r,200));await pg.screenshot({path:'out/a2.png'});
+await pg.keyboard.press('Enter');await new Promise(r=>setTimeout(r,300));const page1=await pg.evaluate(()=>location.hash);
+await pg.keyboard.down('Control');await pg.keyboard.press('k');await pg.keyboard.up('Control');await new Promise(r=>setTimeout(r,200));
+await pg.keyboard.type('balata');await new Promise(r=>setTimeout(r,200));await pg.screenshot({path:'out/a3.png'});
+await pg.keyboard.press('Enter');await new Promise(r=>setTimeout(r,400));const page2=await pg.evaluate(()=>location.hash);
+const nav=async i=>{const btns=await pg.$$('nav[aria-label="Ana menü"] button');await btns[i].click();await new Promise(r=>setTimeout(r,300));};
+await nav(0); const hb=await pg.$$('.hcard .tbtn.pri'); if(hb[0]) await hb[0].click(); await new Promise(r=>setTimeout(r,400)); const page3=await pg.evaluate(()=>location.hash); const lines=await pg.$$eval('.line',x=>x.length);
+await nav(1); await pg.screenshot({path:'out/a4.png'});
+await nav(2); const sc=await pg.$$('.scat'); await sc[1].click(); await new Promise(r=>setTimeout(r,200)); await pg.screenshot({path:'out/a5.png'});
+console.log({page1,page2,page3,lines,errs});await b.close();
