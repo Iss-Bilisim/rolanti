@@ -1167,7 +1167,7 @@ label.tbtn{position:relative;cursor:pointer}
         <div class="shg">
         <div class="hcard shsell">
             <div class="hhead"><h2>Hızlı satış</h2><span class="sub">Yazın ya da barkodu okutun · Enter ekler · F9 ödeme</span></div>
-            <div class="search hsearch">
+            <div class="search hsearch" id="t-hara">
               <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.5a6.5 6.5 0 1 0 .01 0zM16 16l4.5 4.5"></path></svg>
               <input id="hara" ref="{{hsRef}}" value="{{hs.q}}" onChange="{{hs.onQ}}" onKeyDown="{{hs.key}}" placeholder="Ürün adı, stok kodu ya da barkod" autoComplete="off" spellCheck="false" aria-label="Ana sayfada ürün ara">
               <sc-if value="{{hs.hasQ}}" hint-placeholder-val="{{false}}"><button class="iconbtn" onClick="{{hs.clear}}" aria-label="Aramayı temizle"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></sc-if>
@@ -1179,18 +1179,18 @@ label.tbtn{position:relative;cursor:pointer}
               </div>
             </sc-if>
             <sc-if value="{{hs.noQ}}" hint-placeholder-val="{{true}}">
-              <div class="hsquick">
+              <div class="hsquick" id="t-hq">
                 <sc-for list="{{hs.quick}}" as="t" hint-placeholder-count="10"><button class="hsq" onClick="{{t.add}}"><span class="hsqi"><sc-if value="{{t.hasPhoto}}" hint-placeholder-val="{{false}}"><img src="{{t.photo}}" alt=""></sc-if><sc-if value="{{t.inCart}}" hint-placeholder-val="{{false}}"><span class="tq">{{t.qty}}</span></sc-if></span><span class="hsqn">{{t.name}}</span><b class="mono">{{t.price}}</b></button></sc-for>
               </div>
             </sc-if>
           </div>
-          <div class="hcard shacts">
+          <div class="hcard shacts" id="t-acts">
             <div class="hhead"><h2>Sık işlemler</h2></div>
             <div class="hacts">
               <sc-for list="{{h.acts}}" as="a" hint-placeholder-count="8"><button class="hact" onClick="{{a.run}}"><span class="hacti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{a.icon}}"></path></svg></span><span class="hactt"><b>{{a.label}}</b><span>{{a.hint}}</span></span></button></sc-for>
             </div>
           </div>
-          <div class="hcard shstrip">
+          <div class="hcard shstrip" id="t-ozet">
             <div><span>Bugünkü satış</span><b class="mono">{{sh.total}}</b></div>
             <div><span>Fiş</span><b class="mono">{{sh.cnt}}</b></div>
             <div><span>Kasadaki nakit</span><b class="mono">{{k.cash}}</b></div>
@@ -2542,22 +2542,22 @@ class Component extends DCLogic {
     ['Ürün fotoğrafları (13 adet)', 'Çeşitli yazarlar', 'Wikimedia Commons açık lisansları', 'https://commons.wikimedia.org/']
   ]; }
   get TOUR() { return [
-    { title: 'Rölanti\'ye hoş geldiniz', content: 'Hızlı satış ekranını 30 saniyede tanıtalım. İstediğiniz an Esc ile çıkabilirsiniz.' },
-    { t: '#t-ara', title: 'Ürünü arayarak bulun', content: 'Ürün adı, stok kodu, OEM numarası ya da barkod yazın. Ekrana dokunmadan doğrudan yazmaya başlamanız yeterli.', place: 'bottom' },
-    { t: '#t-motor', title: 'Motora göre süzün', content: 'Müşterinin motorunu seçin, yalnızca o motora uyan parçalar listelensin.', place: 'bottom' },
-    { t: '#t-kat', title: 'Kategoriler', content: 'Ne arayacağınızdan emin değilseniz kategoriden girin. Esc ile buraya geri dönersiniz.', place: 'bottom' },
-    { t: '#t-hizli', title: 'Hızlı erişim', content: 'Her gün sattıklarınızı iğneyle sabitleyin, hep aynı yerde dursun. Kalan yerleri sistem en çok satılanlarla doldurur.', place: 'top' },
+    { title: 'Rölanti\'ye hoş geldiniz', content: 'Ana sayfayı 30 saniyede tanıtalım. İstediğiniz an Esc ile çıkabilirsiniz.' },
+    { t: '#t-hara', title: 'Yazın, Enter ile ekleyin', content: 'Ürün adı, stok kodu ya da barkod yazın; Enter ilk ürünü fişe ekler. Ekrana dokunmadan doğrudan yazmaya başlamanız yeterli.', place: 'bottom' },
+    { t: '#t-hq', title: 'Sık satılanlar', content: 'En çok sattığınız ürünler burada. Dokunmanız yeterli; iğneyle sabitlediklerinizi Ürünler sayfasından seçersiniz.', place: 'top' },
+    { t: '#t-acts', title: 'Sık işlemler', content: 'Barkodla satış, barkodla stok girişi, yeni ürün, iş emri, tahsilat ve randevu tek dokunuşla. Telefonda kamerayı barkod tarayıcı gibi kullanın.', place: 'top' },
     { t: '#t-fis', title: 'Fiş', content: 'Eklediğiniz ürünler burada. Adedi + ve − ile değiştirin, veresiye için müşteri ekleyin.', place: 'left' },
     { t: '#t-ode', title: 'Ödeme al', content: 'F9 ile ödemeye geçin, 1–4 tuşlarıyla yöntemi seçin. Nakitte para üstü otomatik hesaplanır.', place: 'top' },
+    { t: '#t-ozet', title: 'Günün özeti', content: 'Bugünkü satış, fiş sayısı ve kasadaki nakit tek bakışta. Ayrıntısı Kasa & Rapor sayfasında.', place: 'top' },
     { t: '#t-genel', title: 'Her şeyi arayın', content: 'Ctrl K ile müşteri, plaka, iş emri ya da fişe her sayfadan ulaşın.', place: 'bottom' },
-    { t: '#t-nav', title: 'Hepsi bu kadar', content: 'Asistan, takvim, servis, cari ve kasa raporu soldaki menüde; menü üzerine gelince açılır. Turu buradaki "Tanıtım turu" ile yeniden izleyebilirsiniz.', place: 'right' },
+    { t: '#t-nav', title: 'Hepsi bu kadar', content: 'Ürünler, servis, cari ve kasa soldaki menüde; takvim ve asistan en altta. Menü üzerine gelince açılır. Turu "Tanıtım turu" ile yeniden izleyebilirsiniz.', place: 'right' },
   ]; }
   startTour() {
-    this.setState({ page: 'satis', cat: null, q: '', motor: null, cmdOpen: false, qEdit: false, tourOn: true, tourI: 0, tourPos: null });
-    try { history.replaceState(null, '', '#satis'); } catch (er) {}
+    this.setState({ page: 'ana', cat: null, q: '', hq: '', motor: null, cmdOpen: false, qEdit: false, tourOn: true, tourI: 0, tourPos: null });
+    try { history.replaceState(null, '', '#ana'); } catch (er) {}
     this.tourHooks(true); this.tourMeasureSoon();
   }
-  endTour() { this.setState({ tourOn: false, tourPos: null }); this.tourHooks(false); try { localStorage.setItem('rl-tour', '1'); } catch (er) {} setTimeout(() => this.searchEl && this.searchEl.focus(), 30); }
+  endTour() { this.setState({ tourOn: false, tourPos: null }); this.tourHooks(false); try { localStorage.setItem('rl-tour', '1'); } catch (er) {} setTimeout(() => { const el = this.state.page === 'ana' ? this.hsEl : this.searchEl; el && el.focus(); }, 30); }
   tourGo(i) { if (i < 0) return; if (i >= this.TOUR.length) { this.endTour(); return; } this.setState({ tourI: i }); this.tourMeasureSoon(); }
   tourHooks(on) {
     if (on && !this._tm) { this._tm = () => this.tourMeasure(); window.addEventListener('resize', this._tm); window.addEventListener('scroll', this._tm, true); }
